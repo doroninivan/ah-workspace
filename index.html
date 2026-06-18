@@ -4,191 +4,209 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Astana Hub × Ivan Doronin — рабочее пространство</title>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#FAF9F7; --ink:#0E0A24; --ink2:#2A2340; --muted:#6B6680;
-  --line:#E8E4DC; --card:#FFFFFF;
-  --accent:#6B3FE8; --accent2:#3FA4E8; --accent-soft:#EDE7FF; --glow:#C7B5FF;
-  --green:#0F6E56; --green-soft:#E1F5EE;
-  --blue:#185FA5; --blue-soft:#E6F1FB;
-  --orange:#C45A1C; --orange-soft:#FFE8CC;
-  --grad:linear-gradient(135deg,#6B3FE8,#3FA4E8);
+  --bg:#f4f2ee; --card:#fff;
+  --text:rgba(0,0,0,.9); --text2:rgba(0,0,0,.6); --muted:rgba(0,0,0,.45);
+  --line:rgba(0,0,0,.08); --line2:rgba(0,0,0,.15);
+  --blue:#0a66c2; --blue-d:#004182; --blue-soft:#e8f0fb;
+  --green:#057642; --brand:#6B3FE8;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#ECE9F5;font-family:'Poppins',-apple-system,sans-serif;color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;}
-.disp{font-family:'Unbounded',sans-serif;letter-spacing:-.02em;}
-.wrap{max-width:1080px;margin:0 auto;padding:0 22px;}
+body{background:var(--bg);font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--text);line-height:1.45;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px;}
+a{color:var(--blue);text-decoration:none;}
+a:hover{text-decoration:underline;}
 
-/* HEADER */
-header{background:radial-gradient(ellipse 900px 400px at 85% -10%,rgba(107,63,232,.45) 0%,transparent 60%),linear-gradient(135deg,#0d0d24 0%,#1a1040 40%,#2d1860 100%);color:#fff;padding:30px 0 26px;}
-.brandline{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
-.brand{font-family:'Unbounded';font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;}
-.brand .d{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--glow);margin-right:9px;box-shadow:0 0 12px var(--glow);}
-.brandline .meta{font-size:12px;opacity:.65;letter-spacing:.05em;}
-header h1{font-family:'Unbounded';font-weight:700;font-size:30px;letter-spacing:-.02em;margin:18px 0 8px;line-height:1.15;}
-header h1 .g{background:linear-gradient(135deg,#C7B5FF,#7FC4FF);-webkit-background-clip:text;background-clip:text;color:transparent;}
-header p{font-size:15px;color:rgba(255,255,255,.72);max-width:680px;}
-.phase{display:inline-flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
-.phase span{font-size:11px;font-weight:600;letter-spacing:.04em;padding:5px 12px;border-radius:100px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);}
-.phase span.on{background:var(--glow);color:#1a1040;border-color:transparent;}
+/* top bar */
+.topbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:54px;}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;letter-spacing:-.01em;}
+.logo .m{width:9px;height:9px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 3px rgba(107,63,232,.18);}
+.topbar .meta{font-size:12.5px;color:var(--muted);}
 
-/* TABS */
-.tabbar{position:sticky;top:0;z-index:20;background:rgba(250,249,247,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
-.tabs{display:flex;gap:4px;overflow-x:auto;padding:10px 0;}
-.tab{flex-shrink:0;font-family:'Poppins';font-size:14px;font-weight:600;color:var(--muted);background:transparent;border:1px solid transparent;border-radius:100px;padding:9px 18px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s;white-space:nowrap;}
-.tab:hover{color:var(--ink);background:#fff;}
-.tab.active{color:#fff;background:var(--grad);box-shadow:0 4px 14px rgba(107,63,232,.3);}
-.tab .lk{font-size:11px;opacity:.7;}
-.tab.locked{color:#9a96aa;}
+/* intro card */
+.intro{background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px 26px;margin-top:18px;}
+.intro h1{font-size:23px;font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-bottom:8px;}
+.intro h1 .b{color:var(--blue);}
+.intro p{font-size:14.5px;color:var(--text2);max-width:680px;}
+.steps{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+.steps span{font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;background:#eef3f8;color:var(--text2);}
+.steps span.on{background:var(--blue);color:#fff;}
 
-/* PANELS */
-.panel{display:none;padding:34px 0 70px;}
+/* tabs */
+.tabbar{background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 10px 10px;margin-bottom:18px;position:sticky;top:54px;z-index:20;}
+.tabs{display:flex;gap:4px;overflow-x:auto;padding:0 12px;}
+.tab{flex-shrink:0;font-family:inherit;font-size:14px;font-weight:600;color:var(--text2);background:none;border:none;border-bottom:2px solid transparent;padding:14px 14px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;}
+.tab:hover{color:var(--text);background:rgba(0,0,0,.03);}
+.tab.active{color:var(--blue-d);border-bottom-color:var(--blue);}
+.tab .lk{font-size:11px;font-weight:500;color:var(--muted);}
+
+.panel{display:none;padding-bottom:60px;}
 .panel.active{display:block;}
-.kick{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:6px 13px;border-radius:100px;margin-bottom:14px;}
-h2{font-family:'Unbounded';font-weight:700;font-size:30px;letter-spacing:-.02em;line-height:1.12;margin-bottom:8px;}
-h2 .acc{color:var(--accent);}
-h3{font-family:'Unbounded';font-weight:600;font-size:16px;letter-spacing:-.01em;}
-.lead{font-size:16px;color:var(--ink2);max-width:760px;margin-bottom:26px;}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-@media(max-width:820px){.g2{grid-template-columns:1fr;}header h1{font-size:24px;}}
+.kick{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;}
 
-.badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;padding:4px 11px;border-radius:100px;text-transform:uppercase;}
-.b-work{background:var(--orange-soft);color:var(--orange);}
-.b-go{background:var(--green-soft);color:var(--green);}
-.b-soon{background:#ECE9F5;color:var(--muted);}
+/* person mini header */
+.phead{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:16px;flex-wrap:wrap;}
+.phead .ava{width:60px;height:60px;border-radius:50%;object-fit:cover;border:1px solid var(--line2);}
+.phead .who .nm{font-weight:700;font-size:19px;letter-spacing:-.01em;}
+.phead .who .ro{font-size:13.5px;color:var(--text2);}
+.phead .who a{font-size:13px;}
+.badge{font-size:11px;font-weight:700;letter-spacing:.03em;padding:5px 11px;border-radius:6px;text-transform:uppercase;}
+.b-work{background:#fff3e6;color:#915907;}
 
-/* person header */
-.phead{display:flex;align-items:center;gap:18px;margin-bottom:24px;flex-wrap:wrap;}
-.phead .ava{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--accent-soft);background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-family:'Unbounded';font-weight:700;font-size:24px;color:var(--accent);}
-.phead .who .nm{font-family:'Unbounded';font-weight:700;font-size:22px;}
-.phead .who .ro{font-size:14px;color:var(--muted);}
-.phead .who a{color:var(--accent2);text-decoration:none;font-size:13px;}
+.sec-title{font-size:16px;font-weight:700;margin:22px 0 12px;letter-spacing:-.01em;}
 
 /* before/after */
-.ba-row{margin-bottom:16px;}
-.ba-label{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-.was{border-left:3px solid var(--orange);background:linear-gradient(180deg,rgba(196,90,28,.04),transparent);}
-.now{border-left:3px solid var(--green);background:linear-gradient(180deg,rgba(15,110,86,.04),transparent);}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:760px){.ba{grid-template-columns:1fr;}}
+.bacard{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
+.bacard.was{border-left:3px solid rgba(0,0,0,.25);}
+.bacard.now{border-left:3px solid var(--green);}
 .tagm{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;}
-.tagm.o{color:var(--orange);} .tagm.g{color:var(--green);}
-.mono{font-size:14px;color:var(--ink2);line-height:1.55;}
-.mono.empty{color:#b8b4c4;font-style:italic;}
-.about{white-space:pre-wrap;font-size:13.5px;color:var(--ink2);line-height:1.62;}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px;}
-.chip{font-size:12px;font-weight:500;color:var(--ink2);background:#fff;border:1px solid var(--line);border-radius:100px;padding:5px 12px;}
-.chip.acc{background:var(--accent-soft);border-color:transparent;color:var(--accent);}
+.tagm.o{color:var(--muted);} .tagm.g{color:var(--green);}
+.bacard .t{font-size:14px;color:var(--text2);line-height:1.5;}
+.bacard .t.empty{color:var(--muted);font-style:italic;}
 
-/* LinkedIn mockup */
-.li{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(14,10,36,.08);}
-.li .banner{height:130px;background:radial-gradient(ellipse 400px 200px at 80% 0%,rgba(63,164,232,.5),transparent),linear-gradient(120deg,#1a1040,#2d1860 60%,#6B3FE8);position:relative;display:flex;align-items:center;padding:0 26px;}
-.li .banner .slo{color:#fff;font-family:'Unbounded';font-weight:600;font-size:15px;line-height:1.3;max-width:75%;letter-spacing:-.01em;}
-.li .banner .tk{position:absolute;top:12px;right:16px;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:4px 10px;border-radius:100px;}
-.li .body{padding:0 22px 20px;position:relative;}
-.li .ava2{width:96px;height:96px;border-radius:50%;border:4px solid #fff;object-fit:cover;margin-top:-48px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-family:'Unbounded';font-weight:700;font-size:32px;color:var(--accent);}
-.li .nm2{font-family:'Unbounded';font-weight:700;font-size:21px;margin-top:10px;}
-.li .hl2{font-size:14px;color:var(--ink2);line-height:1.45;margin-top:5px;max-width:560px;}
-.li .sub2{font-size:12.5px;color:var(--muted);margin-top:8px;}
-.li .btns{display:flex;gap:9px;margin-top:14px;}
-.li .btns .p{font-size:13px;font-weight:600;padding:7px 18px;border-radius:100px;background:var(--accent2);color:#fff;}
-.li .btns .s{font-size:13px;font-weight:600;padding:7px 18px;border-radius:100px;border:1px solid var(--accent2);color:var(--accent2);}
+/* LinkedIn profile preview */
+.li{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:14px;}
+.li .banner{height:160px;position:relative;background:linear-gradient(120deg,#0a2540 0%,#0a66c2 55%,#3b8ee8 100%);}
+.li .banner::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(255,255,255,.18),transparent 45%);}
+.li .banner .slo{position:absolute;left:24px;top:34px;color:#fff;font-weight:700;font-size:17px;line-height:1.3;letter-spacing:-.01em;max-width:62%;z-index:1;}
+.li .banner .tk{position:absolute;top:14px;right:16px;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);padding:5px 11px;border-radius:100px;z-index:1;}
+.li .pad{padding:0 24px 20px;}
+.li .ava2{width:128px;height:128px;border-radius:50%;border:4px solid #fff;object-fit:cover;margin-top:-72px;position:relative;display:block;}
+.li .nm2{font-size:24px;font-weight:700;letter-spacing:-.01em;margin-top:8px;}
+.li .hl2{font-size:15px;color:var(--text);line-height:1.45;margin-top:4px;max-width:620px;}
+.li .loc{font-size:13px;color:var(--muted);margin-top:8px;}
+.li .loc b{color:var(--blue);font-weight:600;}
+.li .btns{display:flex;gap:8px;margin-top:14px;}
+.li .pbtn{font-size:14px;font-weight:600;padding:7px 18px;border-radius:100px;background:var(--blue);color:#fff;border:none;cursor:default;}
+.li .sbtn{font-size:14px;font-weight:600;padding:7px 18px;border-radius:100px;background:#fff;color:var(--blue);border:1.5px solid var(--blue);cursor:default;}
 
-ul.ck{list-style:none;margin-top:4px;}
-ul.ck li{font-size:14px;color:var(--ink2);line-height:1.5;padding-left:24px;position:relative;margin-bottom:9px;}
-ul.ck li::before{content:'';position:absolute;left:0;top:7px;width:13px;height:13px;border-radius:4px;background:var(--green);}
+/* LinkedIn content sections */
+.lsec{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-bottom:14px;position:relative;}
+.lsec h3{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-bottom:12px;}
+.about{white-space:pre-wrap;font-size:14px;color:var(--text);line-height:1.6;}
+.copybtn{font-size:12px;font-weight:600;color:var(--blue);background:#fff;border:1px solid var(--blue);border-radius:100px;padding:5px 14px;cursor:pointer;position:absolute;top:20px;right:24px;}
+.copybtn:hover{background:var(--blue-soft);}
 
-.note{background:var(--accent-soft);border-radius:14px;padding:16px 20px;font-size:13.5px;color:var(--ink2);margin-top:22px;}
-.copybtn{font-family:'Poppins';font-size:12px;font-weight:600;color:var(--accent);background:#fff;border:1px solid var(--accent-soft);border-radius:8px;padding:6px 12px;cursor:pointer;float:right;}
-.copybtn:hover{background:var(--accent-soft);}
+/* featured */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:760px){.feat{grid-template-columns:1fr;}}
+.fcard{border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.fcard .top{height:84px;background:linear-gradient(120deg,#0a2540,#0a66c2);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;text-align:center;padding:0 12px;letter-spacing:.02em;}
+.fcard .top.k2{background:linear-gradient(120deg,#0a66c2,#3b8ee8);}
+.fcard .top.k3{background:linear-gradient(120deg,#3b3b58,#6B3FE8);}
+.fcard .bot{padding:10px 12px;font-size:12.5px;color:var(--text2);line-height:1.4;}
+
+/* experience */
+.exp{display:flex;gap:12px;}
+.exp .lg{width:46px;height:46px;border-radius:8px;background:#eef3f8;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue);font-size:13px;flex-shrink:0;}
+.exp .ti{font-weight:600;font-size:15px;}
+.exp .co{font-size:13.5px;color:var(--text2);}
+.exp .dt{font-size:12.5px;color:var(--muted);}
+.exp .ds{font-size:13.5px;color:var(--text);margin-top:6px;line-height:1.5;}
+
+/* skills */
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{font-size:13px;font-weight:500;color:var(--text);background:#eef3f8;border-radius:6px;padding:6px 12px;}
+
+.note{background:var(--blue-soft);border-radius:10px;padding:14px 18px;font-size:13.5px;color:var(--text);margin-top:14px;}
 
 /* soon */
-.soon{text-align:center;padding:70px 20px;}
-.soon .ico{width:64px;height:64px;border-radius:18px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:28px;}
-.soon h3{font-size:22px;margin-bottom:10px;}
-.soon p{font-size:15px;color:var(--muted);max-width:520px;margin:0 auto;}
-.soon .plist{display:inline-flex;flex-direction:column;gap:8px;margin-top:20px;text-align:left;}
-.soon .plist span{font-size:14px;color:var(--ink2);padding-left:22px;position:relative;}
-.soon .plist span::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:700;}
+.soon{background:#fff;border:1px solid var(--line);border-radius:10px;text-align:center;padding:56px 20px;}
+.soon .ava-s{width:64px;height:64px;border-radius:50%;object-fit:cover;border:1px solid var(--line2);margin:0 auto 16px;display:block;}
+.soon .ico{width:60px;height:60px;border-radius:14px;background:var(--blue-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:26px;}
+.soon h3{font-size:20px;font-weight:700;margin-bottom:8px;}
+.soon p{font-size:14.5px;color:var(--text2);max-width:520px;margin:0 auto;}
+.soon .plist{display:inline-flex;flex-direction:column;gap:8px;margin-top:18px;text-align:left;}
+.soon .plist span{font-size:13.5px;color:var(--text2);padding-left:20px;position:relative;}
+.soon .plist span::before{content:'→';position:absolute;left:0;color:var(--blue);font-weight:700;}
 
-footer{text-align:center;padding:26px;font-size:12px;color:var(--muted);}
+footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);}
 </style>
 </head>
 <body>
 
-<header>
+<div class="topbar">
   <div class="wrap">
-    <div class="brandline">
-      <div class="brand"><span class="d"></span>Astana Hub × Ivan Doronin</div>
-      <div class="meta">Рабочее пространство · LinkedIn-пилот · 2026</div>
-    </div>
-    <h1>Переупаковка профилей команды → <span class="g">канал привлечения участников</span></h1>
-    <p>Рабочая страница проекта. Здесь видно, как меняется каждый профиль, и куда движется пилот: профили → контент → аутрич. В поддержку программы Trusted&nbsp;Kazakhstan.</p>
-    <div class="phase">
+    <div class="logo"><span class="m"></span>Astana Hub × Ivan Doronin</div>
+    <div class="meta">Рабочее пространство · LinkedIn-пилот · 2026</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="intro">
+    <h1>Переупаковка профилей команды → <span class="b">канал привлечения участников</span></h1>
+    <p>Рабочая страница проекта. Здесь видно, как меняется каждый профиль, и куда движется пилот: профили → контент → аутрич. В поддержку программы Trusted Kazakhstan.</p>
+    <div class="steps">
       <span class="on">Шаг 1 · Профили</span>
       <span>Шаг 2 · Контент-план</span>
       <span>Шаг 3 · Аутрич</span>
     </div>
   </div>
-</header>
+</div>
 
 <div class="tabbar">
   <div class="wrap">
     <div class="tabs">
       <button class="tab active" data-tab="askhat">Асхат</button>
-      <button class="tab locked" data-tab="zakarin">Закарин <span class="lk">· скоро</span></button>
-      <button class="tab locked" data-tab="lana">Лана <span class="lk">· скоро</span></button>
-      <button class="tab locked" data-tab="outreach">Аутрич <span class="lk">· скоро</span></button>
-      <button class="tab locked" data-tab="content">Контент <span class="lk">· скоро</span></button>
+      <button class="tab" data-tab="zakarin">Закарин <span class="lk">· скоро</span></button>
+      <button class="tab" data-tab="lana">Лана <span class="lk">· скоро</span></button>
+      <button class="tab" data-tab="outreach">Аутрич <span class="lk">· скоро</span></button>
+      <button class="tab" data-tab="content">Контент <span class="lk">· скоро</span></button>
     </div>
   </div>
 </div>
 
+<div class="wrap">
+
 <!-- ===== ASKHAT ===== -->
 <div class="panel active" id="askhat">
-  <div class="wrap">
-    <div class="kick">Шаг 1 · Профиль 1 из 3</div>
-    <div class="phead">
-      <img class="ava" src="photo_askhat.png" alt="Askhat Sabzhan" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ava',textContent:'AS'}))">
-      <div class="who">
-        <div class="nm">Askhat Sabzhan</div>
-        <div class="ro">Chief Manager · Participant Regulation Office · Astana Hub</div>
-        <a href="https://www.linkedin.com/in/askhatsabzhan/" target="_blank">linkedin.com/in/askhatsabzhan ↗</a>
-      </div>
-      <div style="margin-left:auto;"><span class="badge b-work">В переупаковке</span></div>
+  <div class="kick">Шаг 1 · Профиль 1 из 3</div>
+  <div class="phead">
+    <img class="ava" src="img/askhat.png" alt="Askhat Sabzhan">
+    <div class="who">
+      <div class="nm">Askhat Sabzhan</div>
+      <div class="ro">Chief Manager · Participant Regulation Office · Astana Hub</div>
+      <a href="https://www.linkedin.com/in/askhatsabzhan/" target="_blank">linkedin.com/in/askhatsabzhan ↗</a>
     </div>
+    <div style="margin-left:auto;"><span class="badge b-work">В переупаковке</span></div>
+  </div>
 
-    <!-- profile preview -->
-    <h3 style="margin-bottom:12px;">Как профиль будет выглядеть</h3>
-    <div class="li" style="margin-bottom:30px;">
-      <div class="banner">
-        <div class="tk">Trusted Kazakhstan</div>
-        <div class="slo">From application to residency —<br>founders, visas &amp; market access</div>
-      </div>
-      <div class="body">
-        <div class="ava2"><img src="photo_askhat.png" alt="" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" onerror="this.parentNode.textContent='AS'"></div>
-        <div class="nm2">Askhat Sabzhan</div>
-        <div class="hl2">Chief Manager at Astana Hub | I help founders &amp; IT companies relocate to Kazakhstan and reach the CIS, US, EU &amp; MENA markets | Trusted Kazakhstan</div>
-        <div class="sub2">Astana Hub · Astana, Kazakhstan · 500+ connections</div>
-        <div class="btns"><span class="p">+ Connect</span><span class="s">Message</span></div>
-      </div>
+  <!-- what changes -->
+  <div class="sec-title">Что меняем</div>
+  <div class="ba">
+    <div class="bacard was"><div class="tagm o">Headline — было</div><div class="t">Chief Manager at Astana Hub</div></div>
+    <div class="bacard now"><div class="tagm g">Headline — станет</div><div class="t">Chief Manager at Astana Hub | I help founders &amp; IT companies relocate to Kazakhstan and reach the CIS, US, EU &amp; MENA markets | Trusted Kazakhstan</div></div>
+    <div class="bacard was"><div class="tagm o">About — было</div><div class="t empty">Раздел пустой</div></div>
+    <div class="bacard now"><div class="tagm g">About — станет</div><div class="t">Полный текст «О себе» — ниже в превью, готов к копированию.</div></div>
+  </div>
+
+  <!-- live preview -->
+  <div class="sec-title">Так профиль будет выглядеть вживую</div>
+
+  <div class="li">
+    <div class="banner">
+      <div class="tk">Trusted Kazakhstan</div>
+      <div class="slo">From application to residency —<br>founders, visas &amp; market access</div>
     </div>
-
-    <!-- HEADLINE -->
-    <div class="ba-row">
-      <div class="ba-label">Headline</div>
-      <div class="g2">
-        <div class="card was"><div class="tagm o">Было</div><div class="mono">Chief Manager at Astana Hub</div></div>
-        <div class="card now"><div class="tagm g">Станет</div><div class="mono">Chief Manager at Astana Hub | I help founders &amp; IT companies relocate to Kazakhstan and reach the CIS, US, EU &amp; MENA markets | Trusted Kazakhstan</div></div>
-      </div>
+    <div class="pad">
+      <img class="ava2" src="img/askhat.png" alt="Askhat Sabzhan">
+      <div class="nm2">Askhat Sabzhan</div>
+      <div class="hl2">Chief Manager at Astana Hub | I help founders &amp; IT companies relocate to Kazakhstan and reach the CIS, US, EU &amp; MENA markets | Trusted Kazakhstan</div>
+      <div class="loc">Astana, Kazakhstan · <b>500+ connections</b></div>
+      <div class="btns"><button class="pbtn">+ Connect</button><button class="sbtn">Message</button></div>
     </div>
+  </div>
 
-    <!-- ABOUT -->
-    <div class="ba-row">
-      <div class="ba-label">About / «О себе»</div>
-      <div class="g2">
-        <div class="card was"><div class="tagm o">Было</div><div class="mono empty">Раздел пустой</div></div>
-        <div class="card now"><div class="tagm g">Станет</div><button class="copybtn" onclick="cp(this)">копировать</button><div class="about" id="about-askhat">Most founders think the hardest part of moving to a new country is the product or the funding. It usually isn't. It's the paperwork — visas, residency, regulation — the quiet stuff that eats months before you hire your first person.
+  <div class="lsec">
+    <button class="copybtn" onclick="cp(this)">Копировать</button>
+    <h3>About</h3>
+    <div class="about" id="about-askhat">Most founders think the hardest part of moving to a new country is the product or the funding. It usually isn't. It's the paperwork — visas, residency, regulation — the quiet stuff that eats months before you hire your first person.
 
 That's the part I handle.
 
@@ -203,80 +221,84 @@ Why Kazakhstan, and not Dubai, Yerevan or Belgrade? From one base you get access
 
 If you're a founder or an IT team thinking about where to base next, message me. Happy to walk you through how it actually works — visas, timelines, costs, the real picture.
 
-#TrustedKazakhstan #AstanaHub #relocation #startups #Kazakhstan</div></div>
-      </div>
-    </div>
-
-    <!-- FEATURED + SKILLS -->
-    <div class="g2" style="margin-bottom:16px;">
-      <div class="card">
-        <h3 style="margin-bottom:12px;">Featured — закрепить 3 блока</h3>
-        <ul class="ck">
-          <li>Trusted Kazakhstan — ссылка на программу / one-pager</li>
-          <li>«Как стать резидентом Astana Hub» — страница участия</li>
-          <li>Якорь — первый сильный пост из серии (появится на Шаге 2)</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3 style="margin-bottom:12px;">Навыки — добавить (сейчас пусто)</h3>
-        <div class="chips">
-          <span class="chip acc">Regulatory Affairs</span><span class="chip acc">Government Relations</span>
-          <span class="chip">Startup Ecosystems</span><span class="chip">Business Relocation</span>
-          <span class="chip">Legal Compliance</span><span class="chip">Stakeholder Management</span>
-          <span class="chip">Public Policy</span><span class="chip">Project Management</span><span class="chip">English</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- EXPERIENCE -->
-    <div class="card">
-      <h3 style="margin-bottom:10px;">Описание текущей роли (сейчас пустое)</h3>
-      <div class="about" style="font-size:13.5px;">Chief Manager, Participant Regulation Office — Astana Hub (Aug 2024 – present)
-I guide foreign and local founders through becoming Astana Hub participants: residency, visas, regulatory compliance and the legal groundwork for operating from Kazakhstan. Single point of contact between participants and the hub on everything regulation-related.</div>
-    </div>
-
-    <div class="note"><strong>Что осталось доперсонализировать:</strong> один реальный кейс участника (страна фаундера, что было сложно, чем закончилось) и 1–2 строки «почему сам в этой работе» — добавим в About, чтобы текст звучал на 100% от Асхата. Всё остальное готово к применению.</div>
+#TrustedKazakhstan #AstanaHub #relocation #startups #Kazakhstan</div>
   </div>
+
+  <div class="lsec">
+    <h3>Featured</h3>
+    <div class="feat">
+      <div class="fcard"><div class="top">Trusted Kazakhstan</div><div class="bot">Программа / one-pager — главный актив</div></div>
+      <div class="fcard"><div class="top k2">How to become a participant</div><div class="bot">Страница участия в Astana Hub</div></div>
+      <div class="fcard"><div class="top k3">Founder story</div><div class="bot">Якорный пост из серии (Шаг 2)</div></div>
+    </div>
+  </div>
+
+  <div class="lsec">
+    <h3>Experience</h3>
+    <div class="exp">
+      <div class="lg">AH</div>
+      <div>
+        <div class="ti">Chief Manager, Participant Regulation Office</div>
+        <div class="co">Astana Hub · Full-time</div>
+        <div class="dt">Aug 2024 – present · Astana, Kazakhstan</div>
+        <div class="ds">I guide foreign and local founders through becoming Astana Hub participants: residency, visas, regulatory compliance and the legal groundwork for operating from Kazakhstan. Single point of contact between participants and the hub on everything regulation-related.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lsec">
+    <h3>Skills</h3>
+    <div class="chips">
+      <span class="chip">Regulatory Affairs</span><span class="chip">Government Relations</span>
+      <span class="chip">Startup Ecosystems</span><span class="chip">Business Relocation</span>
+      <span class="chip">Legal Compliance</span><span class="chip">Stakeholder Management</span>
+      <span class="chip">Public Policy</span><span class="chip">Project Management</span><span class="chip">English</span>
+    </div>
+  </div>
+
+  <div class="note"><strong>Осталось доперсонализировать:</strong> один реальный кейс участника (страна фаундера, что было сложно, чем закончилось) и 1–2 строки «почему сам в этой работе» — добавим в About. Всё остальное готово к применению.</div>
 </div>
 
 <!-- ===== ZAKARIN ===== -->
 <div class="panel" id="zakarin">
-  <div class="wrap"><div class="soon">
-    <div class="ico">🛠️</div>
+  <div class="soon">
+    <img class="ava-s" src="img/zakarin.png" alt="Закарин">
     <h3>Закарин — в работе</h3>
-    <p>Профиль директора офиса поддержки участников переупаковываем следующим, по тому же стандарту. Здесь появятся headline, About, Featured и превью.</p>
+    <p>Профиль директора офиса поддержки участников переупаковываем следующим, по тому же стандарту. Здесь появятся headline, About, Featured и живое превью.</p>
     <div class="plist"><span>Headline: ценность вместо должности</span><span>About: сторителлинг руководителя</span><span>Чистка имени и базовая настройка</span></div>
-  </div></div>
+  </div>
 </div>
 
 <!-- ===== LANA ===== -->
 <div class="panel" id="lana">
-  <div class="wrap"><div class="soon">
-    <div class="ico">🛠️</div>
+  <div class="soon">
+    <img class="ava-s" src="img/lana.jpg" alt="Лана">
     <h3>Лана — в работе</h3>
     <p>Самый активный профиль команды (creator mode включён, 500+ подписчиков) — сделаем флагманом. Здесь появится полная переупаковка и чистка URL.</p>
     <div class="plist"><span>Headline: Project Manager → ценность</span><span>About: голос флагмана команды</span><span>Чистый URL вместо хвоста -643a642b5</span></div>
-  </div></div>
+  </div>
 </div>
 
 <!-- ===== OUTREACH ===== -->
 <div class="panel" id="outreach">
-  <div class="wrap"><div class="soon">
+  <div class="soon">
     <div class="ico">✉️</div>
     <h3>Аутрич — Шаг 3</h3>
     <p>Персональные диалоги с целевыми фаундерами и IT-специалистами от имени сотрудников. Здесь будут сегменты ЦА, шаблоны первых сообщений и AI-промт для персонализации.</p>
     <div class="plist"><span>Сегменты ЦА: фаундеры СНГ, senior-удалёнщики, MENA/EU</span><span>Sales Navigator + AI-промт под каждое сообщение</span><span>Дашборд диалогов и статусов</span></div>
-  </div></div>
+  </div>
 </div>
 
 <!-- ===== CONTENT ===== -->
 <div class="panel" id="content">
-  <div class="wrap"><div class="soon">
+  <div class="soon">
     <div class="ico">📝</div>
     <h3>Контент — Шаг 2</h3>
     <p>Контент-план под 3 профиля и цели программы. Здесь появятся рубрики, расписание постов и документальная серия фаундера-резидента.</p>
     <div class="plist"><span>Контент-план на весь пилот</span><span>1 пост в неделю с каждого профиля</span><span>Якорь: серия фаундера, цель охвата 200K+</span></div>
-  </div></div>
+  </div>
+</div>
+
 </div>
 
 <footer>Astana Hub × Ivan Doronin · Trusted Kazakhstan · рабочая страница проекта</footer>
@@ -294,7 +316,7 @@ document.querySelectorAll('.tab').forEach(function(t){
 function cp(btn){
   var txt=document.getElementById('about-askhat').innerText;
   navigator.clipboard.writeText(txt).then(function(){
-    var o=btn.textContent;btn.textContent='скопировано ✓';
+    var o=btn.textContent;btn.textContent='Скопировано ✓';
     setTimeout(function(){btn.textContent=o;},1600);
   });
 }
