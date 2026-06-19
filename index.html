@@ -193,6 +193,8 @@ a:hover{text-decoration:underline;}
 
 .seg2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 @media(max-width:680px){.seg2{grid-template-columns:1fr;}}
+.seg3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media(max-width:820px){.seg3{grid-template-columns:1fr;}}
 .segcard{border-radius:12px;padding:17px 19px;box-shadow:var(--sh);border-left:3px solid var(--blue);}
 .segcard.p2{border-left-color:#7a8aa0;}
 .segcard .pr{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--blue);}
@@ -209,6 +211,10 @@ a:hover{text-decoration:underline;}
 .msg .who{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block;}
 .msg.alt{background:#eef6f0;border-top-left-radius:4px;}
 .msg.alt .who{color:var(--green);}
+.msg.warm{background:#fff5e9;border-top-left-radius:4px;}
+.msg.warm .who{color:#b06d00;}
+.msg.all{background:#eef1f8;border-radius:14px;}
+.msg.all .who{color:var(--brand);}
 
 .blocker{background:#fff3e6;border-radius:12px;padding:15px 18px;font-size:13.5px;color:#7a4f06;margin-top:16px;line-height:1.55;border-left:3px solid #e7a33e;}
 .blocker b{color:#915907;}
@@ -720,22 +726,34 @@ If you're weighing where to build next, message me. Happy to walk you through ho
     <div style="font-size:13.5px;color:var(--text2);line-height:1.55;">Ниже — варианты <b>connect-заметки</b> (первое касание, лимит ~300 символов) под две аудитории. Подставить имя и одну деталь из профиля — и отправлять. Сообщения 1 и follow-up, версии под фаундера и под IT-компанию — в файле <b>basecamp_outreach_messages.md</b>.</div>
   </div>
 
-  <div class="sec-title">Варианты под аудиторию — в ОАЭ vs вне ОАЭ</div>
-  <div class="seg2">
+  <div class="sec-title">Варианты под аудиторию — ОАЭ · Кипр · СНГ</div>
+  <div class="seg3">
     <div class="lsec" style="margin-bottom:0;">
-      <h3>Кто в ОАЭ (Дубай)</h3>
-      <div style="font-size:13px;color:var(--text2);margin:-4px 0 4px;">Угол: жара +45 → +25, медленные банки Дубая, быстрый старт.</div>
+      <h3>ОАЭ (Дубай)</h3>
+      <div style="font-size:13px;color:var(--text2);margin:-4px 0 4px;">Угол: жара +45 → +25, медленные банки, скорость.</div>
       <div class="msg"><span class="who">Вариант 1 · погода</span>{Имя}, в Дубае сейчас +45, а в Астане в августе +25 — горы и озёра рядом. Мы в Astana Hub проводим Base Camp для IT-фаундеров: месяц, за который регистрируете компанию за 7 дней и выходите на рынки ЦА. Места ограничены, рад связи.</div>
       <div class="msg"><span class="who">Вариант 2 · скорость и банк</span>{Имя}, знаю, как в ОАЭ тянется открытие компании и счёта. У нас в Astana Hub — регистрация за 7 дней и 0% налогов до 2029. В августе собираем Base Camp для фаундеров. Если думаете про второй хаб, рад показать, как это устроено.</div>
       <div class="msg"><span class="who">Вариант 3 · новые рынки</span>{Имя}, вижу, вы строите {продукт} из ОАЭ. Если смотрите за пределы Залива — из Казахстана открывается Центральная Азия и Китай с одной базы. В августе у нас Base Camp в Астане, за месяц регистрируют компанию. Буду рад быть на связи.</div>
     </div>
     <div class="lsec" style="margin-bottom:0;">
-      <h3>Кто вне ОАЭ (Кипр · СНГ · хабы)</h3>
-      <div style="font-size:13px;color:var(--text2);margin:-4px 0 4px;">Угол: выбор юрисдикции, конкуренты заходят первыми, операционная помощь.</div>
+      <h3>Кипр (Лимассол)</h3>
+      <div style="font-size:13px;color:var(--text2);margin:-4px 0 4px;">Угол: та же жара + налоги/банки острова vs скорость КЗ.</div>
+      <div class="msg warm"><span class="who">Вариант 1 · погода</span>{Имя}, Лимассол в августе +45. А в Астане +25, горы и озёра рядом — и можно уехать с зарегистрированной компанией. В Astana Hub веду Base Camp для IT-фаундеров: 7 дней на регистрацию, выход на рынки ЦА. Рад связи.</div>
+      <div class="msg warm"><span class="who">Вариант 2 · юрисдикция</span>{Имя}, на Кипре хорошо, но налоги и банки — отдельная история. В Казахстане 0% до 2029 и регистрация за 7 дней. В августе у нас Base Camp для IT-фаундеров в Астане. Если сравниваете юрисдикции — рад показать.</div>
+    </div>
+    <div class="lsec" style="margin-bottom:0;">
+      <h3>СНГ · релокант-хабы</h3>
+      <div style="font-size:13px;color:var(--text2);margin:-4px 0 4px;">Угол: выбор юрисдикции, конкуренты первыми, помощь.</div>
       <div class="msg alt"><span class="who">Вариант 1 · конкуренты</span>{Имя}, пока многие взвешивают, где осесть, кто-то уже регистрирует компанию в Астане — 7 дней, 0% налогов. В августе у нас Base Camp для IT-фаундеров. Если выбираете юрисдикцию, рад показать вариант, который часто упускают.</div>
       <div class="msg alt"><span class="who">Вариант 2 · оператор и помощь</span>{Имя}, я в Astana Hub помогаю фаундерам перевозить бизнес в Казахстан — регистрация, банк, команда. В августе ведём Base Camp: месяц в Астане с выходом на рынки ЦА и Китая. Возможно, будет в тему. Рад знакомству.</div>
       <div class="msg alt"><span class="who">Вариант 3 · недооценённая юрисдикция</span>{Имя}, вижу, вы в теме {ниша}. Сейчас многие сравнивают, где базировать бизнес. Казахстан часто недооценивают: 0% налогов до 2029 и выход на ЦА и Китай. В августе показываем это вживую на Base Camp в Астане. Рад связи.</div>
     </div>
+  </div>
+
+  <div class="sec-title">Универсальный — без привязки к локации</div>
+  <div class="lsec">
+    <div style="font-size:13px;color:var(--text2);margin-bottom:2px;">Один безопасный вариант на любого фаундера — когда город/гео из профиля непонятны.</div>
+    <div class="msg all"><span class="who">Connect-заметка · универсальная</span>{Имя}, вижу, вы строите {продукт}. Я в Astana Hub помогаю IT-фаундерам запускаться в Казахстане: регистрация компании за 7 дней, 0% налогов до 2029, выход на рынки ЦА и Китая. В августе проводим Base Camp — месяц в Астане под этот старт. Если актуально — рад связи.</div>
   </div>
 
   <div class="blocker"><b>Критический путь:</b> и реклама, и аутрич идут с профиля Нурмахана, а он сейчас пустой (1 подписчик). Сначала заполняем его профиль по стандарту Асхата — потом запуск. Иначе клики по имени ведут в пустоту, и бюджет с касаниями сгорают.</div>
