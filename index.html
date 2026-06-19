@@ -168,6 +168,51 @@ a:hover{text-decoration:underline;}
 .soon .plist span{font-size:13.5px;color:var(--text2);padding-left:22px;position:relative;}
 .soon .plist span::before{content:'→';position:absolute;left:0;color:var(--blue);font-weight:700;}
 
+/* ===== Base Camp campaign panel ===== */
+.bc-hero{border-radius:14px;padding:26px 28px;margin-bottom:16px;color:#fff;position:relative;overflow:hidden;background:linear-gradient(125deg,#06182e 0%,#0a3d6e 45%,#0a66c2 78%,#2f86dd 100%);box-shadow:var(--sh-lg);}
+.bc-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.10) 1px,transparent 1.4px);background-size:22px 22px;opacity:.5;}
+.bc-hero .tag{position:relative;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#bcd9fb;}
+.bc-hero h2{position:relative;font-size:28px;font-weight:800;letter-spacing:-.02em;margin:6px 0 8px;}
+.bc-hero p{position:relative;font-size:14.5px;color:#dce9f9;max-width:640px;line-height:1.55;}
+.bc-hero .meta{position:relative;display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+.bc-hero .meta span{font-size:12px;font-weight:600;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:6px 12px;border-radius:100px;}
+
+.offer{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;}
+@media(max-width:680px){.offer{grid-template-columns:1fr;}}
+.offer li{list-style:none;font-size:14px;color:var(--text);padding-left:28px;position:relative;line-height:1.5;}
+.offer li::before{content:"✓";position:absolute;left:0;top:0;width:19px;height:19px;border-radius:50%;background:var(--green);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.offer li b{font-weight:700;}
+
+.geo3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:680px){.geo3{grid-template-columns:1fr;}}
+.geocard{border-radius:10px;padding:15px 16px;background:#f7f9fc;box-shadow:var(--sh-sm);}
+.geocard .hd{font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px;}
+.geocard .hd .dot{width:8px;height:8px;border-radius:50%;background:var(--blue);}
+.geocard .li2{font-size:12.5px;color:var(--text2);margin-top:7px;line-height:1.5;}
+.geocard .ang{font-size:12.5px;color:var(--text);margin-top:9px;font-style:italic;border-left:2px solid var(--line2);padding-left:9px;}
+
+.seg2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:680px){.seg2{grid-template-columns:1fr;}}
+.segcard{border-radius:12px;padding:17px 19px;box-shadow:var(--sh);border-left:3px solid var(--blue);}
+.segcard.p2{border-left-color:#7a8aa0;}
+.segcard .pr{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--blue);}
+.segcard.p2 .pr{color:#7a8aa0;}
+.segcard .nm{font-weight:700;font-size:16px;margin:3px 0 8px;letter-spacing:-.01em;}
+.segcard .row{font-size:13px;color:var(--text2);line-height:1.6;}
+.segcard .row b{color:var(--text);font-weight:600;}
+
+.funnel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:4px;}
+.funnel .st{font-size:12.5px;font-weight:600;background:#eef3f8;color:var(--text2);padding:7px 13px;border-radius:100px;}
+.funnel .ar{color:var(--muted);font-weight:700;}
+
+.msg{background:#f4f7fb;border-radius:14px;border-top-left-radius:4px;padding:13px 16px;font-size:13.5px;line-height:1.55;color:var(--text);max-width:600px;margin-top:10px;white-space:pre-wrap;}
+.msg .who{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block;}
+.msg.alt{background:#eef6f0;border-top-left-radius:4px;}
+.msg.alt .who{color:var(--green);}
+
+.blocker{background:#fff3e6;border-radius:12px;padding:15px 18px;font-size:13.5px;color:#7a4f06;margin-top:16px;line-height:1.55;border-left:3px solid #e7a33e;}
+.blocker b{color:#915907;}
+
 footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);}
 </style>
 </head>
@@ -196,7 +241,7 @@ footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);}
       <button class="tab active" data-tab="askhat">Асхат</button>
       <button class="tab" data-tab="zakarin">Закарин <span class="lk">· скоро</span></button>
       <button class="tab" data-tab="lana">Лана <span class="lk">· скоро</span></button>
-      <button class="tab" data-tab="outreach">Аутрич <span class="lk">· скоро</span></button>
+      <button class="tab" data-tab="outreach">Base Camp <span class="lk">· Шаг 3</span></button>
       <button class="tab" data-tab="content">Контент <span class="lk">· скоро</span></button>
     </div>
   </div>
@@ -397,14 +442,90 @@ If you're a founder or an IT team thinking about where to base next, message me.
   </div>
 </div>
 
-<!-- ===== OUTREACH ===== -->
+<!-- ===== BASE CAMP ===== -->
 <div class="panel" id="outreach">
-  <div class="soon">
-    <div class="ico">✉️</div>
-    <h3>Аутрич — Шаг 3</h3>
-    <p>Персональные диалоги с целевыми фаундерами и IT-специалистами от имени сотрудников. Здесь будут сегменты ЦА, шаблоны первых сообщений и AI-промт для персонализации.</p>
-    <div class="plist"><span>Сегменты ЦА: фаундеры СНГ, senior-удалёнщики, MENA/EU</span><span>Sales Navigator + AI-промт под каждое сообщение</span><span>Дашборд диалогов и статусов</span></div>
+  <div class="kick">Шаг 3 · Реклама + аутрич · кампания</div>
+
+  <div class="bc-hero">
+    <div class="tag">Кампания LinkedIn · август 2026</div>
+    <h2>Base Camp KZ</h2>
+    <p>Месяц в Астане для IT-фаундеров и команд: приезжаете — уезжаете с зарегистрированной компанией и выходом на новые рынки. Привлекаем участников через рекламу и аутрич с профиля Нурмахана.</p>
+    <div class="meta"><span>Группа 20–30 человек</span><span>Носитель: профиль Нура</span><span>Гео: русскоязычные</span></div>
   </div>
+
+  <div class="lsec">
+    <h3>Что внутри программы</h3>
+    <ul class="offer">
+      <li><b>Регистрация компании</b> в Astana Hub за 7 дней</li>
+      <li><b>0% налогов</b> до 2029 года</li>
+      <li><b>Воркшопы</b> по выходу на рынки Центральной Азии и Китая</li>
+      <li><b>Встречи с инвесторами</b> и резидентами экосистемы</li>
+      <li>Культурная программа: Comic Con, Park Live, рок-фест</li>
+      <li>Астана в августе: +25, горы и озёра рядом</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">Гео и сообщение под каждый рынок</div>
+  <div class="geo3">
+    <div class="geocard">
+      <div class="hd"><span class="dot"></span>Дубай</div>
+      <div class="li2">Русскоязычные фаундеры в ОАЭ. Уже за границей, высокий доход.</div>
+      <div class="ang">«Дубай в августе +45 в тени. А что если провести месяц в Астане?»</div>
+    </div>
+    <div class="geocard">
+      <div class="hd"><span class="dot"></span>Кипр</div>
+      <div class="li2">IT-диаспора в Лимасоле. Та же жара, зеркальный оффер.</div>
+      <div class="ang">«Лимассол +45. Месяц в Астане — и вы с зарегистрированной компанией.»</div>
+    </div>
+    <div class="geocard">
+      <div class="hd"><span class="dot"></span>СНГ + хабы</div>
+      <div class="li2">Релокант-хабы: Тбилиси, Ереван, Стамбул, Белград. Широкий охват.</div>
+      <div class="ang">«Пока вы взвешиваете варианты, кто-то уже регистрирует компанию в Астане.»</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Кому показываем (целевая аудитория)</div>
+  <div class="seg2">
+    <div class="segcard">
+      <div class="pr">Приоритет 1</div>
+      <div class="nm">Фаундеры стартапов</div>
+      <div class="row"><b>Должности:</b> Founder, Co-Founder, CEO, Основатель<br><b>Компания:</b> 1–50 человек<br><b>Сферы:</b> Software, IT Services, Fintech, Gaming, AI<br><b>Боль:</b> резидентство, налоги, выход на рынки</div>
+    </div>
+    <div class="segcard p2">
+      <div class="pr">Приоритет 2</div>
+      <div class="nm">Руководители IT-компаний</div>
+      <div class="row"><b>Должности:</b> CEO, CTO, COO, Managing Director, Owner<br><b>Компания:</b> 11–200 человек<br><b>Сферы:</b> IT Services, Software, Outsourcing<br><b>Боль:</b> IT-экспорт, налоговый режим, релокация команды</div>
+    </div>
+  </div>
+  <div class="note">Главный фильтр во всех кампаниях — <b>язык профиля = русский</b>. LinkedIn заблокирован в РФ, поэтому ядро — диаспора, которая уже уехала и сравнивает юрисдикции. Полная спецификация для маркетологов — в файле <b>basecamp_audience_brief.md</b>.</div>
+
+  <div class="lsec">
+    <h3>Как идёт реклама</h3>
+    <div class="row" style="font-size:14px;color:var(--text2);line-height:1.6;">Формат — <b>Thought Leader Ads</b>: рекламный кабинет Astana Hub спонсирует пост <b>Нурмахана</b>. Это реклама «от его лица», а не безличный баннер бренда — живее и доверительнее, и ровно в логике пилота (профили сотрудников как канал). Раздельные кампании по гео (Дубай / Кипр / СНГ) × сегменту, чтобы видеть, что конвертит.</div>
+  </div>
+
+  <div class="sec-title">Аутрич с профиля Нура — воронка</div>
+  <div class="lsec">
+    <div class="funnel">
+      <span class="st">Connect</span><span class="ar">→</span>
+      <span class="st">Сообщение 1</span><span class="ar">→</span>
+      <span class="st">Follow-up 1</span><span class="ar">→</span>
+      <span class="st">Follow-up 2</span><span class="ar">→</span>
+      <span class="st">Заявка / звонок</span>
+    </div>
+
+    <div class="msg"><span class="who">Connect-заметка · Дубай</span>{Имя}, увидел, что вы строите {продукт} из Дубая. Я в Astana Hub помогаю фаундерам переносить бизнес в Казахстан. В августе у нас Base Camp — месяц, за который регистрируют компанию и выходят на рынки ЦА. Возможно, будет в тему. Рад связи.</div>
+
+    <div class="msg alt"><span class="who">Первое сообщение · фаундер</span>{Имя}, спасибо, что приняли.
+
+Коротко, зачем пишу: в августе мы в Astana Hub проводим Base Camp KZ — месяц для IT-фаундеров. Приезжаете, за 7 дней регистрируем компанию, дальше воркшопы по выходу на ЦА и Китай, встречи с инвесторами. Налог 0% до 2029.
+
+Берём группу 20–30 человек. Вы сейчас вообще смотрите в сторону релокации/нового рынка, или пока рано?</div>
+
+    <div class="note" style="margin-top:14px;">Полный набор шаблонов (3 гео-версии connect, сообщения под фаундера и под IT-компанию, два follow-up, ответ заинтересованному, do/don't) — в файле <b>basecamp_outreach_messages.md</b>.</div>
+  </div>
+
+  <div class="blocker"><b>Критический путь:</b> и реклама, и аутрич идут с профиля Нурмахана, а он сейчас пустой (1 подписчик). Сначала заполняем его профиль по стандарту Асхата — потом запуск. Иначе клики по имени ведут в пустоту, и бюджет с касаниями сгорают.</div>
 </div>
 
 <!-- ===== CONTENT ===== -->
