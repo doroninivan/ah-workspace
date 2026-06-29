@@ -219,6 +219,31 @@ a:hover{text-decoration:underline;}
 .blocker{background:#fff3e6;border-radius:12px;padding:15px 18px;font-size:13.5px;color:#7a4f06;margin-top:16px;line-height:1.55;border-left:3px solid #e7a33e;}
 .blocker b{color:#915907;}
 
+/* ===== Content / competitor analysis ===== */
+.stats4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+@media(max-width:680px){.stats4{grid-template-columns:1fr 1fr;}}
+.statbig{background:#f7f9fc;border-radius:10px;padding:15px 12px;text-align:center;box-shadow:var(--sh-sm);}
+.statbig .n{font-size:24px;font-weight:800;color:var(--blue);letter-spacing:-.02em;}
+.statbig .lb{font-size:12px;color:var(--text2);margin-top:4px;line-height:1.35;}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:680px){.cmp{grid-template-columns:1fr;}}
+.cmpcard{border-radius:12px;padding:16px 18px;box-shadow:var(--sh);}
+.cmpcard.win{border-top:3px solid var(--green);}
+.cmpcard.ref{border-top:3px solid var(--blue);}
+.cmpcard .ttl{font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.cmpcard .ttl small{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;}
+.cmpcard .kv{font-size:13px;color:var(--text2);display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);}
+.cmpcard .kv:last-child{border-bottom:none;}
+.cmpcard .kv b{color:var(--text);font-weight:600;}
+.prow{padding:11px 0;border-bottom:1px solid var(--line);}
+.prow:last-child{border-bottom:none;}
+.prow a{font-size:13.5px;font-weight:600;line-height:1.4;display:inline-block;}
+.prow .mt{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;align-items:center;}
+.met{font-size:11px;font-weight:700;padding:3px 9px;border-radius:100px;}
+.met.l{background:#e8f0fb;color:var(--blue-d);}
+.met.c{background:#fdf0e6;color:#915907;}
+.met.s{background:#e7f5ee;color:var(--green);}
+.met.f{background:#eef1f8;color:var(--muted);font-weight:600;}
 footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);}
 </style>
 </head>
@@ -248,7 +273,7 @@ footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);}
       <button class="tab" data-tab="zakarin">Нурмахан</button>
       <button class="tab" data-tab="lana">Лана</button>
       <button class="tab" data-tab="outreach">Base Camp <span class="lk">· Шаг 3</span></button>
-      <button class="tab" data-tab="content">Контент <span class="lk">· скоро</span></button>
+      <button class="tab" data-tab="content">Контент <span class="lk">· Шаг 2</span></button>
     </div>
   </div>
 
@@ -930,12 +955,85 @@ This is part of a national pilot, launched on the President's mandate, to bring 
 
 <!-- ===== CONTENT ===== -->
 <div class="panel" id="content">
-  <div class="soon">
-    <div class="ico">📝</div>
-    <h3>Контент — Шаг 2</h3>
-    <p>Контент-план под 3 профиля и цели программы. Здесь появятся рубрики, расписание постов и документальная серия фаундера-резидента.</p>
-    <div class="plist"><span>Контент-план на весь пилот</span><span>1 пост в неделю с каждого профиля</span><span>Якорь: серия фаундера, цель охвата 200K+</span></div>
+  <div class="kick">Шаг 2 · контент-план + анализ конкурентов</div>
+
+  <div class="bc-hero" style="background:linear-gradient(125deg,#1b1033 0%,#3a2470 45%,#6B3FE8 100%);">
+    <div class="tag">Анализ LinkedIn · скрейп Apify · июнь 2026</div>
+    <h2>Что постят конкуренты — и где пустота</h2>
+    <p>Разобрали посты IT Park Uzbekistan и самого Astana Hub. Вывод: обе страницы делают только институциональный контент сверху вниз. Человеческого, практического, фаундер-facing контента не делает никто. Эту нишу и занимают личные профили команды.</p>
   </div>
+
+  <div class="sec-title">Цифры из скрейпа</div>
+  <div class="stats4">
+    <div class="statbig"><div class="n">94%</div><div class="lb">вовлечения — это лайки. Комменты 2%, репосты 4%</div></div>
+    <div class="statbig"><div class="n">18 / 4</div><div class="lb">постов в неделю: IT Park / Astana Hub</div></div>
+    <div class="statbig"><div class="n">0</div><div class="lb">хэштегов используют оба — ниша свободна</div></div>
+    <div class="statbig"><div class="n">×2</div><div class="lb">Astana Hub берёт качеством: вдвое больше вовлечения при меньшем числе постов</div></div>
+  </div>
+
+  <div class="sec-title">IT Park Uzbekistan vs Astana Hub</div>
+  <div class="cmp">
+    <div class="cmpcard ref">
+      <div class="ttl">IT Park Uzbekistan <small>конкурент</small></div>
+      <div class="kv"><span>Постов / неделю</span><b>~18</b></div>
+      <div class="kv"><span>Средняя длина</span><b>1161 симв.</b></div>
+      <div class="kv"><span>Лучший формат</span><b>карусель (36 avg)</b></div>
+      <div class="kv"><span>Вовлечение / пост</span><b>~34</b></div>
+      <div class="kv"><span>О чём</span><b>партнёрства, MoU, министры, экспансия в MENA</b></div>
+    </div>
+    <div class="cmpcard win">
+      <div class="ttl">Astana Hub <small>бенчмарк</small></div>
+      <div class="kv"><span>Постов / неделю</span><b>~4</b></div>
+      <div class="kv"><span>Средняя длина</span><b>1145 симв.</b></div>
+      <div class="kv"><span>Лучший формат</span><b>одиночное фото (76 avg)</b></div>
+      <div class="kv"><span>Вовлечение / пост</span><b>~63</b></div>
+      <div class="kv"><span>О чём</span><b>AI (alem.ai, OpenAI, NVIDIA), визиты, GITEX</b></div>
+    </div>
+  </div>
+
+  <div class="lsec" style="margin-top:14px;">
+    <h3>Что лучше заходит</h3>
+    <ul class="offer" style="grid-template-columns:1fr;">
+      <li><b>Визуал бьёт текст</b> — текст-онли худший формат у обоих. Сильное одиночное фото с конкретным человеком/брендом или карусель.</li>
+      <li><b>Конкретика даёт пик</b> — имена и цифры (OpenAI, NVIDIA, $4.3B экосистема). Наш аналог: реальные резиденты, страны фаундеров, кейсы.</li>
+      <li><b>Комменты и репосты редки</b> — их вызывают выгода (налоговые льготы) и громкие сделки. Никто не задаёт вопросов аудитории — а это даёт ответы и заявки.</li>
+      <li><b>Качество важнее объёма</b> — Astana Hub при 4 постах/нед обгоняет IT Park с 18. Один сильный пост в неделю работает.</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">Топ-посты конкурентов (со ссылками)</div>
+  <div class="cmp">
+    <div class="lsec" style="margin-bottom:0;">
+      <h3 style="font-size:16px;">IT Park Uzbekistan</h3>
+      <div class="prow"><a href="https://www.linkedin.com/posts/itparkuz_it-park-uzbekistan-discussed-strengthening-activity-7473725863025393665-09Lo" target="_blank">Партнёрство со Sturgeon Capital (венчур) ↗</a><div class="mt"><span class="met l">95 лайков</span><span class="met c">1 комм</span><span class="met s">3 репоста</span><span class="met f">карусель</span></div></div>
+      <div class="prow"><a href="https://www.linkedin.com/posts/itparkuz_it-park-uzbekistan-and-tuspark-jiangsu-activity-7472660518760075264-rKPR" target="_blank">Сотрудничество с TusPark (Китай) ↗</a><div class="mt"><span class="met l">68 лайков</span><span class="met c">1 комм</span><span class="met s">1 репост</span><span class="met f">карусель</span></div></div>
+      <div class="prow"><a href="https://www.linkedin.com/posts/itparkuz_enterprise-uzbekistan-hosted-the-panel-session-activity-7473611232445382656-_EZz" target="_blank">Панель «Rethinking Jurisdictions» ↗</a><div class="mt"><span class="met l">55 лайков</span><span class="met c">3 комм</span><span class="met s">1 репост</span><span class="met f">карусель</span></div></div>
+      <div class="prow"><a href="https://www.linkedin.com/posts/itparkuz_golden-gate-ventures-mena-launches-operations-activity-7473253878554259458-gUzj" target="_blank">Golden Gate Ventures MENA заходит в УЗ ↗</a><div class="mt"><span class="met l">51 лайк</span><span class="met c">1 комм</span><span class="met s">1 репост</span><span class="met f">фото</span></div></div>
+    </div>
+    <div class="lsec" style="margin-bottom:0;">
+      <h3 style="font-size:16px;">Astana Hub (бенчмарк)</h3>
+      <div class="prow"><a href="https://www.linkedin.com/posts/astanahub_presidents-of-kazakhstan-and-t%C3%BCrkiye-visited-activity-7460711242966642689-C44r" target="_blank">Президенты КЗ и Турции в alem.ai ↗</a><div class="mt"><span class="met l">188 лайков</span><span class="met c">2 комм</span><span class="met s">4 репоста</span><span class="met f">карусель</span></div></div>
+      <div class="prow"><a href="https://www.linkedin.com/posts/astanahub_kazakhstan-signed-agreements-with-the-us-activity-7472241321714323457-YFp_" target="_blank">Сделка с Firebird AI (NVIDIA) ↗</a><div class="mt"><span class="met l">177 лайков</span><span class="met c">4 комм</span><span class="met s">10 репостов</span><span class="met f">фото</span></div></div>
+      <div class="prow"><a href="https://www.linkedin.com/posts/astanahub_as-part-of-the-from-science-to-startup-activity-7465730155974639616-BC20" target="_blank">Панель «From Science to Startup» ↗</a><div class="mt"><span class="met l">142 лайка</span><span class="met c">2 комм</span><span class="met s">11 репостов</span><span class="met f">карусель</span></div></div>
+      <div class="prow"><a href="https://www.linkedin.com/posts/astanahub_at-gitex-ai-kazakhstan-2026-in-almaty-astana-activity-7457106155819917312-E_KB" target="_blank">GITEX AI 2026, MoU с ARDVENTURE ↗</a><div class="mt"><span class="met l">115 лайков</span><span class="met c">2 комм</span><span class="met s">8 репостов</span><span class="met f">фото</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec-title">Наша стратегия: занять пустоту</div>
+  <div class="lsec">
+    <div class="row" style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:12px;">Корпостраницы = макро (политика, форумы, цифры). Личные профили команды делают то, чего конкуренты не делают: <b>микро, практику, человека</b>. Именно это привлекает участников.</div>
+    <div class="chips">
+      <span class="chip">How it works — объяснялки виз/регистрации</span>
+      <span class="chip">Resident stories — кейсы фаундеров</span>
+      <span class="chip">Inside the hub — закулисье</span>
+      <span class="chip">Myth vs reality — сравнения юрисдикций</span>
+      <span class="chip">Base Camp build-up</span>
+      <span class="chip">Operator's take — личное мнение</span>
+    </div>
+    <div class="row" style="font-size:13.5px;color:var(--text2);line-height:1.6;margin-top:14px;"><b>Угол на каждого:</b> Асхат — правовая сторона и compliance · Нур — операции и Base Camp · Лана — Digital Nomad Visa и истории (флагман). Ритм: 1 пост/неделю с профиля, разнесены по дням.</div>
+  </div>
+
+  <div class="note">Полный план с календарём на 4 недели и do/don't — в файле <b>content_plan.md</b>. Следующий шаг: по <b>3 готовых поста на каждого участника</b> (под копипаст).</div>
 </div>
 
 </div>
