@@ -262,6 +262,16 @@ a:hover{text-decoration:underline;}
 .pauthor img{width:38px;height:38px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px var(--line2);}
 .pauthor .pn{font-weight:700;font-size:15px;}
 .pauthor .pa{font-size:12.5px;color:var(--muted);}
+.acc{background:#fff;border-radius:12px;box-shadow:var(--sh);margin-bottom:12px;overflow:hidden;}
+.acc>summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:11px;font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--text);user-select:none;transition:background .15s;}
+.acc>summary::-webkit-details-marker{display:none;}
+.acc>summary:hover{background:rgba(0,0,0,.02);}
+.acc>summary .chev{color:var(--blue);font-size:12px;transition:transform .2s;flex-shrink:0;}
+.acc[open]>summary .chev{transform:rotate(90deg);}
+.acc[open]>summary{border-bottom:1px solid var(--line);}
+.acc>summary .ct{margin-left:auto;font-size:12px;font-weight:600;color:var(--muted);background:#eef3f8;padding:3px 12px;border-radius:100px;}
+.acc-body{background:#f4f6f9;padding:14px;}
+.acc-body .postcard:last-child{margin-bottom:0;}
 footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);}
 </style>
 </head>
@@ -1093,7 +1103,9 @@ If you want the Middle East to be your business's next destination, apply to the
   </div>
 
   <!-- ASKHAT -->
-  <div class="sec-title">Асхат — правовая сторона, «red tape»</div>
+  <details class="acc" open>
+    <summary><span class="chev">▶</span> Асхат — правовая сторона, «red tape» <span class="ct">4 поста</span></summary>
+    <div class="acc-body">
 
   <div class="postcard">
     <div class="ph"><span class="rub">Myth vs reality</span><span class="fmt">карусель</span><button class="cpb" onclick="cpost(this)">Копировать</button></div>
@@ -1163,8 +1175,13 @@ Weighing the two? Tell me your setup and I'll give you the unvarnished version.<
     <div class="tags">#relocation #Kazakhstan #Dubai #startups #TrustedKazakhstan</div>
   </div>
 
+    </div>
+  </details>
+
   <!-- NUR -->
-  <div class="sec-title">Нур — операции и Base Camp</div>
+  <details class="acc">
+    <summary><span class="chev">▶</span> Нур — операции и Base Camp <span class="ct">3 поста</span></summary>
+    <div class="acc-body">
 
   <div class="postcard">
     <div class="ph"><span class="rub">Base Camp</span><span class="fmt">карусель</span><button class="cpb" onclick="cpost(this)">Копировать</button></div>
@@ -1216,8 +1233,13 @@ If you've been on the fence, now's the time. Message me, or apply through the li
     <div class="tags">#BaseCampKZ #relocation #Kazakhstan #startups #AstanaHub</div>
   </div>
 
+    </div>
+  </details>
+
   <!-- LANA -->
-  <div class="sec-title">Лана — Digital Nomad Visa и истории (флагман)</div>
+  <details class="acc">
+    <summary><span class="chev">▶</span> Лана — Digital Nomad Visa и истории (флагман) <span class="ct">3 поста</span></summary>
+    <div class="acc-body">
 
   <div class="postcard">
     <div class="ph"><span class="rub">How it works</span><span class="fmt">карусель</span><button class="cpb" onclick="cpost(this)">Копировать</button></div>
@@ -1266,6 +1288,9 @@ The tax break gets you in the door. Being able to actually operate is what makes
 That's the part I help with. If you're weighing a move, ask me the boring questions — those are the ones that decide it.</div>
     <div class="tags">#DigitalNomad #Kazakhstan #relocation #remotework #AstanaHub</div>
   </div>
+
+    </div>
+  </details>
 
   <div class="note"><strong>Язык:</strong> посты на английском — под англоязычные профили и международную аудиторию (как у конкурентов). Для таргета на СНГ (Дубай/Кипр) могу сделать русские версии. <strong>Заметка:</strong> в посте-истории Ланы нужен реальный кейс (страна фаундера, деталь, разрешение на публикацию) — сейчас обезличенный шаблон.</div>
 </div>
