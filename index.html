@@ -244,6 +244,24 @@ a:hover{text-decoration:underline;}
 .met.c{background:#fdf0e6;color:#915907;}
 .met.s{background:#e7f5ee;color:var(--green);}
 .met.f{background:#eef1f8;color:var(--muted);font-weight:600;}
+/* ===== sample teardown + post cards ===== */
+.sample{background:#f7f9fc;border-left:3px solid var(--green);border-radius:8px;padding:15px 17px;white-space:pre-wrap;font-size:13px;line-height:1.58;color:var(--text);}
+.why{display:flex;flex-direction:column;gap:8px;margin-top:14px;}
+.why .w{font-size:13.5px;color:var(--text2);line-height:1.5;padding-left:22px;position:relative;}
+.why .w::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:700;}
+.why .w b{color:var(--text);font-weight:600;}
+.postcard{background:#fff;border-radius:12px;box-shadow:var(--sh);margin-bottom:12px;overflow:hidden;}
+.postcard .ph{display:flex;align-items:center;gap:9px;padding:11px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+.postcard .rub{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--blue);}
+.postcard .fmt{font-size:11px;font-weight:600;color:var(--muted);background:#eef3f8;padding:3px 10px;border-radius:100px;}
+.postcard .cpb{margin-left:auto;font-size:12px;font-weight:600;color:var(--blue);background:#fff;border:1px solid var(--blue);border-radius:100px;padding:4px 13px;cursor:pointer;transition:background .15s;}
+.postcard .cpb:hover{background:var(--blue-soft);}
+.postcard .pt{padding:14px 17px;white-space:pre-wrap;font-size:13.5px;line-height:1.62;color:var(--text);}
+.postcard .tags{padding:0 17px 14px;font-size:12.5px;color:var(--blue);font-weight:600;}
+.pauthor{display:flex;align-items:center;gap:10px;margin:6px 0 12px;}
+.pauthor img{width:38px;height:38px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px var(--line2);}
+.pauthor .pn{font-weight:700;font-size:15px;}
+.pauthor .pa{font-size:12.5px;color:var(--muted);}
 footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);}
 </style>
 </head>
@@ -274,6 +292,7 @@ footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);}
       <button class="tab" data-tab="lana">Лана</button>
       <button class="tab" data-tab="outreach">Base Camp <span class="lk">· Шаг 3</span></button>
       <button class="tab" data-tab="content">Контент <span class="lk">· Шаг 2</span></button>
+      <button class="tab" data-tab="analytics">Аналитика <span class="lk">· Шаг 2</span></button>
     </div>
   </div>
 
@@ -953,9 +972,9 @@ This is part of a national pilot, launched on the President's mandate, to bring 
   <div class="blocker"><b>Критический путь:</b> и реклама, и аутрич идут с профиля Нурмахана, а он сейчас пустой (1 подписчик). Сначала заполняем его профиль по стандарту Асхата — потом запуск. Иначе клики по имени ведут в пустоту, и бюджет с касаниями сгорают.</div>
 </div>
 
-<!-- ===== CONTENT ===== -->
-<div class="panel" id="content">
-  <div class="kick">Шаг 2 · контент-план + анализ конкурентов</div>
+<!-- ===== ANALYTICS ===== -->
+<div class="panel" id="analytics">
+  <div class="kick">Шаг 2 · анализ конкурентов</div>
 
   <div class="bc-hero" style="background:linear-gradient(125deg,#1b1033 0%,#3a2470 45%,#6B3FE8 100%);">
     <div class="tag">Анализ LinkedIn · скрейп Apify · июнь 2026</div>
@@ -1019,6 +1038,34 @@ This is part of a national pilot, launched on the President's mandate, to bring 
     </div>
   </div>
 
+  <div class="sec-title">Образец удачного поста — разбор</div>
+  <div class="lsec">
+    <div class="row" style="font-size:13.5px;color:var(--text2);line-height:1.55;margin-bottom:12px;">Лучший обучающий пример — пост <b>StartupBase</b> (стартап-направление IT Park). Не топ по абсолютным лайкам, но это ровно тот фаундер-facing формат, который нужен личным профилям: хук-вопрос, обращение к аудитории, ценность буллетами, ясный CTA со ссылкой. По этому шаблону собраны посты во вкладке «Контент».</div>
+    <div class="sample">Saudi Arabia might be the next market for your startup
+
+Thinking about expanding beyond Uzbekistan but not sure where to start?
+
+Over the past few years, the Middle East has become one of the biggest startup hubs in the world. Investors, corporations, and new opportunities are all converging in the region.
+
+And here's the good news: IT Park Uzbekistan's office in Saudi Arabia is now onboarding startups.
+
+Together, we can:
+• Connect with potential partners
+• Reach regional investors
+• Explore market opportunities across the region
+
+If you want the Middle East to be your business's next destination, apply to the Open Call today.
+→ Apply here: [link]</div>
+    <div class="why">
+      <div class="w"><b>Хук-вопрос в первой строке</b> — «might be the next market for your startup». Обращение к аудитории, не заголовок пресс-релиза.</div>
+      <div class="w"><b>«Your startup», «you»</b> — пост про читателя, а не про себя. У конкурентов на корпостранице этого почти нет.</div>
+      <div class="w"><b>Ценность буллетами</b> — 3 конкретных выгоды, легко сканировать.</div>
+      <div class="w"><b>Один ясный CTA со ссылкой</b> — apply here. Не «следите за нами».</div>
+      <div class="w"><b>Короткие абзацы</b> — воздух, читается с телефона.</div>
+    </div>
+    <div class="note" style="margin-top:14px;">Для сравнения: топ по абсолютному вовлечению (177 лайков) — пост Astana Hub про сделку с Firebird AI / NVIDIA на $10 млрд. Урок оттуда: <b>конкретные имена и цифры</b> дают пик. У нас аналог — реальные резиденты, страны фаундеров, сроки и суммы.</div>
+  </div>
+
   <div class="sec-title">Наша стратегия: занять пустоту</div>
   <div class="lsec">
     <div class="row" style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:12px;">Корпостраницы = макро (политика, форумы, цифры). Личные профили команды делают то, чего конкуренты не делают: <b>микро, практику, человека</b>. Именно это привлекает участников.</div>
@@ -1033,7 +1080,174 @@ This is part of a national pilot, launched on the President's mandate, to bring 
     <div class="row" style="font-size:13.5px;color:var(--text2);line-height:1.6;margin-top:14px;"><b>Угол на каждого:</b> Асхат — правовая сторона и compliance · Нур — операции и Base Camp · Лана — Digital Nomad Visa и истории (флагман). Ритм: 1 пост/неделю с профиля, разнесены по дням.</div>
   </div>
 
-  <div class="note">Полный план с календарём на 4 недели и do/don't — в файле <b>content_plan.md</b>. Следующий шаг: по <b>3 готовых поста на каждого участника</b> (под копипаст).</div>
+  <div class="note">Полный план с календарём на 4 недели и do/don't — в файле <b>content_plan.md</b>. Готовые посты под копипаст — во вкладке <b>«Контент»</b>.</div>
+</div>
+
+<!-- ===== CONTENT (posts) ===== -->
+<div class="panel" id="content">
+  <div class="kick">Шаг 2 · готовые посты под копипаст</div>
+  <div class="bc-hero" style="background:linear-gradient(125deg,#06182e 0%,#0a3d6e 45%,#0a66c2 90%);">
+    <div class="tag">9 постов · по 3 на участника</div>
+    <h2>Контент для команды</h2>
+    <p>Посты собраны по выводам из вкладки «Аналитика»: человеческий хук в первой строке, обращение к аудитории, конкретика, один CTA, 3–5 хэштегов (конкуренты их не используют). Каждый — в голосе и угле своего участника. Копируй и публикуй.</p>
+  </div>
+
+  <!-- ASKHAT -->
+  <div class="sec-title">Асхат — правовая сторона, «red tape»</div>
+
+  <div class="postcard">
+    <div class="ph"><span class="rub">Myth vs reality</span><span class="fmt">карусель</span><button class="cpb" onclick="cpost(this)">Копировать</button></div>
+    <div class="pt">Most founders think the hardest part of moving to Kazakhstan is the paperwork.
+
+It isn't — if you do the steps in the right order.
+
+I've taken founders from their first application to full residency for years, and the ones who stall almost always make the same move: they treat the legal setup as the last thing. It's the first.
+
+Get the order right and a company is registered in about 7 days:
+• Confirm your activity qualifies for Astana Hub
+• Register the entity (this is the fast part)
+• Lock in the tax and visa benefits you're entitled to
+• Then build
+
+The paperwork isn't the wall. Doing it out of order is.
+
+Relocating a company this year? Send me a message — I'll share the actual checklist.</div>
+    <div class="tags">#relocation #Kazakhstan #startups #TrustedKazakhstan #AstanaHub</div>
+  </div>
+
+  <div class="postcard">
+    <div class="ph"><span class="rub">How it works</span><span class="fmt">карусель</span><button class="cpb" onclick="cpost(this)">Копировать</button></div>
+    <div class="pt">Three things decide whether your company gets Astana Hub resident status. Most founders only know the first one.
+
+1. Your activity. It has to be genuine IT/tech work — this part most people get.
+2. The structure. How you register matters as much as that you register. The wrong setup costs you benefits later.
+3. Compliance with the regime. The 0% tax until 2029 comes with rules. Simple ones, but you have to follow them.
+
+Get all three right and you're not just "registered" — you're a resident with the full tax, visa and operational upside.
+
+Not sure if you'd qualify? Tell me what you're building and I'll give it to you straight.</div>
+    <div class="tags">#Kazakhstan #relocation #startups #legaltech #TrustedKazakhstan</div>
+  </div>
+
+  <div class="postcard">
+    <div class="ph"><span class="rub">Operator's take</span><span class="fmt">фото + текст</span><button class="cpb" onclick="cpost(this)">Копировать</button></div>
+    <div class="pt">The number one mistake I see founders make when relocating to Kazakhstan:
+
+they leave the legal setup for last.
+
+They sort the flights, the office, the team — and only then ask "so how do we actually register?" By that point they've made choices that box them in.
+
+The legal structure isn't the boring final step. It's the foundation everything else sits on. Done first, it makes the rest fast and cheap. Done last, it makes the rest a rework.
+
+If you're planning a move, start here. Happy to walk through your case.</div>
+    <div class="tags">#relocation #Kazakhstan #compliance #startups #TrustedKazakhstan</div>
+  </div>
+
+  <!-- NUR -->
+  <div class="sec-title">Нур — операции и Base Camp</div>
+
+  <div class="postcard">
+    <div class="ph"><span class="rub">Base Camp</span><span class="fmt">карусель</span><button class="cpb" onclick="cpost(this)">Копировать</button></div>
+    <div class="pt">This August, a group of founders will fly into Astana and leave one month later with a registered company and a foot in the Central Asian market.
+
+It's called Base Camp KZ, and here's the plan:
+• Company registered in 7 days
+• 0% tax until 2029
+• Workshops on entering Central Asia and China
+• Meetings with investors and residents who've done it
+• And yes — Astana in August is +25, not +45
+
+We're keeping the group small: 20–30 people. That's on purpose, so everyone actually gets set up.
+
+If you've been weighing where to base next, this is the shortcut. Message me and I'll send the details.</div>
+    <div class="tags">#BaseCampKZ #relocation #Kazakhstan #startups #AstanaHub</div>
+  </div>
+
+  <div class="postcard">
+    <div class="ph"><span class="rub">Inside the hub</span><span class="fmt">карусель (по дням)</span><button class="cpb" onclick="cpost(this)">Копировать</button></div>
+    <div class="pt">What actually happens in your first 7 days as an Astana Hub participant — not the brochure version:
+
+Day 1–2. We check your activity qualifies and prep the documents. You mostly send us a few files.
+Day 3–4. The entity gets registered. This is the part founders expect to take months. It doesn't.
+Day 5. Banking and the basics so you can actually operate.
+Day 6–7. We walk you through the benefits you now have — tax, visa, what changes.
+
+A week in, you're not "thinking about Kazakhstan." You're running from it.
+
+Curious how it'd look for your case? Drop me a message.</div>
+    <div class="tags">#Kazakhstan #relocation #startups #operations #AstanaHub</div>
+  </div>
+
+  <div class="postcard">
+    <div class="ph"><span class="rub">Myth vs reality</span><span class="fmt">карусель</span><button class="cpb" onclick="cpost(this)">Копировать</button></div>
+    <div class="pt">Dubai or Astana? Founders ask me this every week. Here's the honest version — including where Dubai wins.
+
+Dubai wins on: brand, lifestyle, a mature investor scene. No argument there.
+
+Astana wins on:
+• Speed — company in 7 days, not weeks of waiting on a bank
+• Cost — setup and operations are a fraction
+• Tax — 0% until 2029
+• Reach — one base into Central Asia and China
+
+If you want the flex of a Dubai address, take it. If you want to actually register, pay less, and move into new markets fast — look east.
+
+I help founders make this call. Ask me anything.</div>
+    <div class="tags">#relocation #Kazakhstan #Dubai #startups #BaseCampKZ</div>
+  </div>
+
+  <!-- LANA -->
+  <div class="sec-title">Лана — Digital Nomad Visa и истории (флагман)</div>
+
+  <div class="postcard">
+    <div class="ph"><span class="rub">How it works</span><span class="fmt">карусель</span><button class="cpb" onclick="cpost(this)">Копировать</button></div>
+    <div class="pt">How does an IT specialist actually get a Digital Nomad visa for Kazakhstan?
+
+I review these applications every week, so here are the real steps — no brochure language:
+
+1. Check you qualify. It's built for IT/tech professionals from priority fields.
+2. Apply. You send the documents, we moderate and verify.
+3. Skills check. A short review and interview — we want to see you're the real thing.
+4. The petition. We issue the paperwork for your residence permit.
+5. You're in — legal to live and work, with the program's benefits.
+
+Most of it I handle on my side. Your part is a few documents and one conversation.
+
+Thinking about it? Message me and I'll tell you if you'd qualify.</div>
+    <div class="tags">#DigitalNomad #relocation #Kazakhstan #remotework #TrustedKazakhstan</div>
+  </div>
+
+  <div class="postcard">
+    <div class="ph"><span class="rub">Resident story</span><span class="fmt">фото + текст</span><button class="cpb" onclick="cpost(this)">Копировать</button></div>
+    <div class="pt">Six weeks ago a developer sent me a one-line message: "Is Kazakhstan a real option, or just hype?"
+
+Today his company is registered and his Digital Nomad residency is done.
+
+In between was the part nobody posts about: the questions about taxes, whether his clients abroad would be a problem, how fast banking really is. We went through all of it. No step took as long as he expected.
+
+What changed his mind wasn't a pitch. It was seeing the actual timeline.
+
+If you're sitting on the same question he was — message me. I'll give you the real answer, not the hype.
+
+(Sharing with permission. Details kept light on purpose.)</div>
+    <div class="tags">#DigitalNomad #relocation #Kazakhstan #startups #founderstories</div>
+  </div>
+
+  <div class="postcard">
+    <div class="ph"><span class="rub">Operator's take</span><span class="fmt">текст</span><button class="cpb" onclick="cpost(this)">Копировать</button></div>
+    <div class="pt">I process Digital Nomad visa applications every week. The thing that surprises founders most:
+
+how little of it is actually about taxes.
+
+Everyone arrives asking about the 0%. Fair — it matters. But the real relief on people's faces comes later, when they realize they can be fully legal, run their business, pay people, and open a bank account without a six-month maze.
+
+The tax break gets you in the door. Being able to actually operate is what makes people stay.
+
+That's the part I help with. If you're weighing a move, ask me the boring questions — those are the ones that decide it.</div>
+    <div class="tags">#DigitalNomad #Kazakhstan #relocation #remotework #AstanaHub</div>
+  </div>
+
+  <div class="note"><strong>Язык:</strong> посты на английском — под англоязычные профили и международную аудиторию (как у конкурентов). Для таргета на СНГ (Дубай/Кипр) могу сделать русские версии. <strong>Заметка:</strong> в посте-истории Ланы нужен реальный кейс (страна фаундера, деталь, разрешение на публикацию) — сейчас обезличенный шаблон.</div>
 </div>
 
 </div>
@@ -1060,6 +1274,16 @@ function cpEl(btn,id){
 function cp(btn){cpEl(btn,'about-askhat');}
 function cpN(btn){cpEl(btn,'about-nur');}
 function cpL(btn){cpEl(btn,'about-lana');}
+function cpost(btn){
+  var card=btn.closest('.postcard');
+  var txt=card.querySelector('.pt').innerText;
+  var tags=card.querySelector('.tags');
+  if(tags) txt+='\n\n'+tags.innerText;
+  navigator.clipboard.writeText(txt).then(function(){
+    var o=btn.textContent;btn.textContent='Скопировано ✓';
+    setTimeout(function(){btn.textContent=o;},1600);
+  });
+}
 </script>
 </body>
 </html>
