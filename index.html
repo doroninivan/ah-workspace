@@ -281,6 +281,33 @@ a:hover{text-decoration:underline;}
 .carousel img{height:300px;width:auto;border-radius:9px;box-shadow:0 1px 4px rgba(0,0,0,.12);scroll-snap-align:start;flex-shrink:0;}
 .carousel::-webkit-scrollbar{height:8px;}
 .carousel::-webkit-scrollbar-thumb{background:rgba(0,0,0,.18);border-radius:100px;}
+/* ===== Аутрич · ЦА + персоны ===== */
+.aud-seg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:760px){.aud-seg{grid-template-columns:1fr;}}
+.audcard{border-radius:12px;padding:17px 19px;box-shadow:var(--sh);border-left:3px solid var(--blue);background:#fff;}
+.audcard.p2{border-left-color:#7a8aa0;} .audcard.p3{border-left-color:var(--green);} .audcard.p4{border-left-color:#b06de0;}
+.audcard .pr{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--blue);}
+.audcard.p2 .pr{color:#7a8aa0;} .audcard.p3 .pr{color:var(--green);} .audcard.p4 .pr{color:#9a4fd0;}
+.audcard .nm{font-weight:700;font-size:16px;margin:3px 0 4px;letter-spacing:-.01em;}
+.audcard .who{font-size:12px;color:var(--muted);margin-bottom:8px;}
+.audcard .row{font-size:13px;color:var(--text2);line-height:1.6;}
+.audcard .row b{color:var(--text);font-weight:600;}
+.personas{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:900px){.personas{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.personas{grid-template-columns:1fr;}}
+.persona{background:#fff;border-radius:12px;box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column;}
+.persona .ph{display:flex;align-items:center;gap:10px;padding:13px 15px 10px;}
+.persona .av{width:42px;height:42px;border-radius:50%;background:#eef3f8;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.persona .tt{font-weight:700;font-size:14px;line-height:1.2;letter-spacing:-.01em;}
+.persona .rl{font-size:12px;color:var(--muted);margin-top:2px;}
+.persona .bd{padding:0 15px 12px;font-size:12.5px;color:var(--text2);line-height:1.5;flex:1;}
+.persona .bd .kv{display:flex;gap:6px;padding:3px 0;}
+.persona .bd .kv .k{color:var(--muted);min-width:52px;flex-shrink:0;}
+.persona .bd .kv .v{color:var(--text);font-weight:500;}
+.persona .sig{background:#f4f7fb;border-radius:8px;padding:8px 10px;margin-top:8px;font-size:12px;color:var(--text2);line-height:1.45;}
+.persona .ft{border-top:1px solid var(--line);padding:9px 15px;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11.5px;}
+.persona .ft .by{font-weight:700;color:var(--blue);}
+.persona .ft .of{color:var(--muted);}
 footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);}
 </style>
 </head>
@@ -309,6 +336,7 @@ footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);}
       <button class="tab active" data-tab="askhat">Асхат</button>
       <button class="tab" data-tab="zakarin">Нурмахан</button>
       <button class="tab" data-tab="lana">Лана</button>
+      <button class="tab" data-tab="audience">Аутрич</button>
       <button class="tab" data-tab="outreach">Base Camp</button>
       <button class="tab" data-tab="analytics">Аналитика</button>
       <button class="tab" data-tab="content">Контент</button>
@@ -882,6 +910,125 @@ This is part of a national pilot, launched on the President's mandate, to bring 
   </div>
 
   <div class="note"><strong>Сильная сторона профиля:</strong> Лана буквально оператор Digital Nomad Residency и регистрации компаний — самый «целевой» человек команды под релокейт-питч, плюс английский B2 и ещё 3 языка. <strong>Осталось:</strong> почистить URL (убрать хвост -643a642b5 в настройках LinkedIn) и подтвердить точное название роли/офиса.</div>
+</div>
+
+<!-- ===== АУТРИЧ · ЦА ПРОЕКТА ===== -->
+<div class="panel" id="audience">
+  <div class="kick">Шаг 3 · Аутрич · целевая аудитория проекта</div>
+
+  <div class="bc-hero">
+    <div class="tag">Кого привлекаем через профили команды</div>
+    <h2>Целевая аудитория</h2>
+    <p>Профили Асхата, Нура и Ланы — канал привлечения участников в Astana Hub. Пишем и притягиваем русскоязычных IT-фаундеров, компании и специалистов, которые релоцируются или ищут вторую базу — и продаём им регистрацию, резидентство (ДНР) и Base Camp.</p>
+    <div class="meta"><span>Язык аутрича: русский</span><span>Профили: английский</span><span>Отправка: вручную (ToS)</span></div>
+  </div>
+
+  <div class="sec-title">Сегменты аудитории</div>
+  <div class="aud-seg">
+    <div class="audcard">
+      <div class="pr">Приоритет 1 · ведёт Нур + Асхат</div>
+      <div class="nm">IT-фаундеры и стартап-CEO</div>
+      <div class="who">Основатели ранних и растущих IT-стартапов, ищут вторую базу / юрисдикцию</div>
+      <div class="row"><b>Оффер:</b> регистрация за 7 дней, 0% налогов, выход на рынки СНГ/Китай/ЮВА, Base Camp, инвесторы</div>
+    </div>
+    <div class="audcard p2">
+      <div class="pr">Приоритет 2 · ведёт Асхат + Нур</div>
+      <div class="nm">Владельцы / руководители IT-компаний</div>
+      <div class="who">CEO/CTO/COO компаний 10–200 чел, думают про релокацию команды</div>
+      <div class="row"><b>Оффер:</b> IT-экспорт из Казахстана, налоговый режим, легализация команды, compliance</div>
+    </div>
+    <div class="audcard p3">
+      <div class="pr">Приоритет 1 (флагман) · ведёт Лана</div>
+      <div class="nm">Senior IT-специалисты и digital nomads</div>
+      <div class="who">Сильные разработчики/тимлиды, ищут легальный долгосрочный статус</div>
+      <div class="row"><b>Оффер:</b> Digital Nomad Residency (ВНЖ 10 лет), РВП, помощь с оформлением под ключ</div>
+    </div>
+    <div class="audcard p4">
+      <div class="pr">Вторично · ведёт Нур / Лана</div>
+      <div class="nm">Инвесторы и бизнес-ангелы</div>
+      <div class="who">VC и ангелы с интересом к экосистеме Центральной Азии</div>
+      <div class="row"><b>Оффер:</b> доступ к резидентам и стартапам хаба, деалфлоу, экосистема Astana Hub</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Гео и язык</div>
+  <div class="geo3">
+    <div class="geocard">
+      <div class="hd"><span class="dot"></span>Релокант-хабы</div>
+      <div class="li2">Дубай (ОАЭ), Кипр (Лимасол), Тбилиси, Ереван, Стамбул, Белград.</div>
+      <div class="ang">Уже уехали, сравнивают юрисдикции — самый горячий сегмент.</div>
+    </div>
+    <div class="geocard">
+      <div class="hd"><span class="dot"></span>СНГ + соседи</div>
+      <div class="li2">Казахстан, Узбекистан, Кыргызстан, Азербайджан, Армения, Грузия.</div>
+      <div class="ang">Безвизовый въезд → РВП → ДНР. Широкий охват.</div>
+    </div>
+    <div class="geocard">
+      <div class="hd"><span class="dot"></span>Язык</div>
+      <div class="li2">Аутрич на русском (диаспора), профили и посты на английском.</div>
+      <div class="ang">LinkedIn заблокирован в РФ → бьём по тем, кто уже за границей.</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Примеры профилей (архетипы, кому пишем)</div>
+  <div class="personas">
+    <div class="persona">
+      <div class="ph"><div class="av">💻</div><div><div class="tt">Фаундер SaaS-стартапа</div><div class="rl">CEO · 8 чел · Дубай</div></div></div>
+      <div class="bd">
+        <div class="kv"><span class="k">Индустрия</span><span class="v">B2B SaaS / Fintech</span></div>
+        <div class="kv"><span class="k">Ситуация</span><span class="v">релоцировался из РФ, ищет налог. оптимизацию</span></div>
+        <div class="sig">Сигнал: Founder/CEO, локация ОАЭ, профиль на русском, ключи «relocation / building»</div>
+      </div>
+      <div class="ft"><span class="by">→ Нур</span><span class="of">Base Camp · регистрация</span></div>
+    </div>
+    <div class="persona">
+      <div class="ph"><div class="av">🛠️</div><div><div class="tt">CTO аутсорс-компании</div><div class="rl">CTO · 40 чел · Кипр</div></div></div>
+      <div class="bd">
+        <div class="kv"><span class="k">Индустрия</span><span class="v">IT Services / Outsourcing</span></div>
+        <div class="kv"><span class="k">Ситуация</span><span class="v">думает про вторую базу для команды</span></div>
+        <div class="sig">Сигнал: CTO/COO, компания 11–200, Лимасол, тема IT-экспорта</div>
+      </div>
+      <div class="ft"><span class="by">→ Асхат</span><span class="of">налог. режим · легализация</span></div>
+    </div>
+    <div class="persona">
+      <div class="ph"><div class="av">🧑‍💻</div><div><div class="tt">Senior Backend-разработчик</div><div class="rl">Digital nomad · Тбилиси</div></div></div>
+      <div class="bd">
+        <div class="kv"><span class="k">Статус</span><span class="v">удалёнка / фриланс</span></div>
+        <div class="kv"><span class="k">Ситуация</span><span class="v">устал продлевать статус, хочет вдолгую</span></div>
+        <div class="sig">Сигнал: Senior/Lead Engineer, релокант-хаб, «remote / open to relocation»</div>
+      </div>
+      <div class="ft"><span class="by">→ Лана</span><span class="of">Digital Nomad Residency</span></div>
+    </div>
+    <div class="persona">
+      <div class="ph"><div class="av">🎮</div><div><div class="tt">Основательница gamedev-студии</div><div class="rl">Founder · 15 чел · Ереван</div></div></div>
+      <div class="bd">
+        <div class="kv"><span class="k">Индустрия</span><span class="v">Gaming / Product</span></div>
+        <div class="kv"><span class="k">Ситуация</span><span class="v">масштабируется, смотрит на новые рынки</span></div>
+        <div class="sig">Сигнал: Founder, Computer Games, 11–50, выход на ЦА/ЮВА</div>
+      </div>
+      <div class="ft"><span class="by">→ Нур</span><span class="of">Base Camp · рынки</span></div>
+    </div>
+    <div class="persona">
+      <div class="ph"><div class="av">🤖</div><div><div class="tt">Co-founder AI-стартапа</div><div class="rl">Co-Founder · 5 чел · Белград</div></div></div>
+      <div class="bd">
+        <div class="kv"><span class="k">Индустрия</span><span class="v">AI / ML · early-stage</span></div>
+        <div class="kv"><span class="k">Ситуация</span><span class="v">ищет юрисдикцию с льготами + инвесторов</span></div>
+        <div class="sig">Сигнал: Co-Founder, AI/ML, 1–10, интерес Venture Capital</div>
+      </div>
+      <div class="ft"><span class="by">→ Нур + Асхат</span><span class="of">Base Camp · инвесторы</span></div>
+    </div>
+    <div class="persona">
+      <div class="ph"><div class="av">📦</div><div><div class="tt">Продуктовый лид, релокант</div><div class="rl">Head of Product · Стамбул</div></div></div>
+      <div class="bd">
+        <div class="kv"><span class="k">Роль</span><span class="v">Head of Product / команда</span></div>
+        <div class="kv"><span class="k">Ситуация</span><span class="v">рассматривает переезд команды</span></div>
+        <div class="sig">Сигнал: Head of / Director, IT-компания, Стамбул, «team relocation»</div>
+      </div>
+      <div class="ft"><span class="by">→ Асхат</span><span class="of">легализация команды</span></div>
+    </div>
+  </div>
+
+  <div class="note"><strong>Как это работает:</strong> профили-архетипы выше — примеры «идеального адресата», не конкретные люди. Реальных находим через LinkedIn / Sales Navigator по сигналам (должность + локация + индустрия + язык профиля). Пишет вручную сам участник команды (не бот, не bulk — ToS). Детальный таргетинг для рекламы — во вкладке <b>Base Camp</b> и файле <b>basecamp_audience_brief.md</b>; шаблоны сообщений — <b>basecamp_outreach_messages.md</b>.</div>
 </div>
 
 <!-- ===== BASE CAMP ===== -->
