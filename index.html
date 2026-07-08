@@ -1485,15 +1485,29 @@ That's the part I help with. If you're weighing a move, ask me the boring questi
 <footer>Astana Hub × Ivan Doronin · Trusted Kazakhstan · рабочая страница проекта</footer>
 
 <script>
+function activateTab(id){
+  var tab=document.querySelector('.tab[data-tab="'+id+'"]');
+  var panel=document.getElementById(id);
+  if(!tab||!panel) return;
+  document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
+  document.querySelectorAll('.panel').forEach(function(x){x.classList.remove('active');});
+  tab.classList.add('active');
+  panel.classList.add('active');
+  window.scrollTo({top:0,behavior:'auto'});
+}
+// клик по вкладке ставит #hash → hashchange переключает панель (прямая ссылка + назад/вперёд)
 document.querySelectorAll('.tab').forEach(function(t){
   t.addEventListener('click',function(){
-    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
-    document.querySelectorAll('.panel').forEach(function(x){x.classList.remove('active');});
-    t.classList.add('active');
-    document.getElementById(t.dataset.tab).classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
+    if(location.hash==='#'+t.dataset.tab){ activateTab(t.dataset.tab); }
+    else { location.hash=t.dataset.tab; }
   });
 });
+function tabFromHash(){
+  var id=(location.hash||'').replace(/^#/,'');
+  if(id && document.querySelector('.tab[data-tab="'+id+'"]')){ activateTab(id); }
+}
+window.addEventListener('hashchange', tabFromHash);
+tabFromHash();  // открыть вкладку из #hash при загрузке (вставленная прямая ссылка)
 function cpEl(btn,id){
   var txt=document.getElementById(id).innerText;
   navigator.clipboard.writeText(txt).then(function(){
