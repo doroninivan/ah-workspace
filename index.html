@@ -361,6 +361,7 @@ footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);}
       <button class="tab" data-tab="analytics">Аналитика</button>
       <button class="tab" data-tab="content">Контент</button>
       <button class="tab" data-tab="audience">Аутрич</button>
+      <button class="tab" data-tab="funnel">Воронка</button>
     </div>
   </div>
 
@@ -935,12 +936,12 @@ This is part of a national pilot, launched on the President's mandate, to bring 
 
 <!-- ===== АУТРИЧ · ЦА ПРОЕКТА ===== -->
 <div class="panel" id="audience">
-  <div class="kick">Шаг 3 · Аутрич · целевая аудитория проекта</div>
+  <div class="kick">Шаг 3 · Аутрич · целевая аудитория</div>
 
   <div class="bc-hero">
     <div class="tag">Кого привлекаем через профили команды</div>
     <h2>Целевая аудитория</h2>
-    <p>Профили Асхата, Нура и Ланы — канал привлечения участников в Astana Hub. Два контура. <b>Outbound</b> — ручной аутрич по трём аудиториям (фаундеры → Нур, IT-компании → Асхат, инвесторы → Нур/Лана), цепочки ниже. <b>Inbound</b> — IT-специалисты приходят сами на контент Ланы за Digital Nomad Residency; вручную такой объём не набирается. Ничего не продаём: участие в инициативе бесплатное, рамка — возможность и рост, не переезд.</p>
+    <p>Кого привлекаем через профили команды. <b>Outbound</b> — ручной аутрич по трём аудиториям: фаундеры → Нур, IT-компании → Асхат, инвесторы → Нур. <b>Inbound</b> — IT-специалисты приходят сами на контент Ланы за Digital Nomad Residency. Здесь — <b>кого</b> бьём и по каким сигналам искать. Сами цепочки сообщений, правила запуска и воронка — во вкладке <b>Воронка</b>.</p>
     <div class="meta"><span>Язык аутрича: русский</span><span>Профили: английский</span><span>Отправка: вручную (ToS)</span><span>Ритм: 3 касания, дальше стоп</span></div>
   </div>
 
@@ -1066,6 +1067,66 @@ This is part of a national pilot, launched on the President's mandate, to bring 
       </div>
       <div class="ft"><span class="by">→ Нур · цепочка 03</span><span class="of">питч-сессии · Base Camp</span></div>
     </div>
+  </div>
+
+
+  <div class="note"><strong>Дальше:</strong> тексты сообщений, лимиты LinkedIn, порядок запуска и счётчик отправки — во вкладке <b>Воронка</b>. Здесь фиксируем только портрет аудитории для согласования.</div>
+
+</div>
+
+<!-- ===== ВОРОНКА ===== -->
+<div class="panel" id="funnel">
+  <div class="kick">Шаг 3 · Аутрич · исполнение и статистика</div>
+
+  <div class="bc-hero" style="background:linear-gradient(125deg,#06182e 0%,#0a3d6e 45%,#0a66c2 90%);">
+    <div class="tag">Воронка · пилот Дубай</div>
+    <h2>Аутрич — воронка и цепочки</h2>
+    <p>Здесь — <b>чем</b> пишем и <b>как</b> идёт отправка. Портрет аудитории (кого бьём) — во вкладке <b>Аутрич</b>. Цифры воронки ведём вручную из трекера в Google Sheets (данные контактов не публикуем — на странице только сводка).</p>
+  </div>
+
+  <div class="sec-title">Счётчик — пилотная выборка (Дубай)</div>
+  <div class="note" style="margin-bottom:14px;">Первая выборка: <b>15 профилей</b> — Нур 10 (фаундеры 5 + инвесторы 5), Асхат 5 (CEO IT). Собраны скрейпером Apify (No Cookies — аккаунты команды не затронуты). Персональный список — в приватном файле <code>outreach_pilot_dubai.html</code>, не на дашборде. Ниже обновляем по мере отправки.</div>
+
+  <div style="background:#fff;border-radius:12px;box-shadow:var(--sh);padding:20px 22px 16px;margin-bottom:14px;">
+    <div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px;">
+      <div><div style="font-size:26px;font-weight:800;color:#0a66c2;">15</div><div style="font-size:12px;color:#8a94a3;">найдено</div></div>
+      <div><div style="font-size:26px;font-weight:800;">0</div><div style="font-size:12px;color:#8a94a3;">отправлено</div></div>
+      <div><div style="font-size:26px;font-weight:800;">0</div><div style="font-size:12px;color:#8a94a3;">принято</div></div>
+      <div><div style="font-size:26px;font-weight:800;">0</div><div style="font-size:12px;color:#8a94a3;">ответили</div></div>
+      <div><div style="font-size:26px;font-weight:800;color:#137333;">0</div><div style="font-size:12px;color:#8a94a3;">в консьерж</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:9px;">
+      <div style="width:150px;font-size:13px;text-align:right;color:#444;">Найдено</div>
+      <div style="flex:1;background:#eef2f7;border-radius:6px;height:30px;position:relative;">
+        <div style="width:100%;background:#0a66c2;height:100%;border-radius:6px;min-width:34px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;color:#fff;font-weight:700;font-size:13px;">15</div>
+      </div>
+      <div style="width:52px;font-size:12px;color:#8a94a3;"></div>
+    </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:9px;">
+      <div style="width:150px;font-size:13px;text-align:right;color:#444;">Коннект отправлен</div>
+      <div style="flex:1;background:#eef2f7;border-radius:6px;height:30px;position:relative;">
+        <div style="width:6%;background:#2a7de1;height:100%;border-radius:6px;min-width:34px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;color:#fff;font-weight:700;font-size:13px;">0</div>
+      </div>
+      <div style="width:52px;font-size:12px;color:#8a94a3;">0%</div>
+    </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:9px;">
+      <div style="width:150px;font-size:13px;text-align:right;color:#444;">Принято</div>
+      <div style="flex:1;background:#eef2f7;border-radius:6px;height:30px;position:relative;">
+        <div style="width:6%;background:#3f93d6;height:100%;border-radius:6px;min-width:34px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;color:#fff;font-weight:700;font-size:13px;">0</div>
+      </div>
+      <div style="width:52px;font-size:12px;color:#8a94a3;">0%</div>
+    </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:9px;">
+      <div style="width:150px;font-size:13px;text-align:right;color:#444;">Ответили</div>
+      <div style="flex:1;background:#eef2f7;border-radius:6px;height:30px;position:relative;">
+        <div style="width:6%;background:#5aa9cb;height:100%;border-radius:6px;min-width:34px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;color:#fff;font-weight:700;font-size:13px;">0</div>
+      </div>
+      <div style="width:52px;font-size:12px;color:#8a94a3;">0%</div>
+    </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:9px;">
+      <div style="width:150px;font-size:13px;text-align:right;color:#444;">Передано в консьерж</div>
+      <div style="flex:1;background:#eef2f7;border-radius:6px;height:30px;position:relative;">
+        <div style="width:6%;background:#137333;height:100%;border-radius:6px;min-width:34px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;color:#fff;font-weight:700;font-size:13px;">0</div>
+      </div>
+      <div style="width:52px;font-size:12px;color:#8a94a3;">0%</div>
+    </div>
+    <div style="font-size:12px;color:#8a94a3;margin-top:10px;border-top:1px solid var(--line);padding-top:10px;">Обновлено: 16.07.2026 · старт отправки. Правило: коннект без welcome note (лимит 3–5 записок/мес), первое сообщение — сразу после принятия. По каждому участнику воронку смотрим в трекере <code>outreach_tracker.csv</code>.</div>
   </div>
 
   <div class="sec-title">Запуск — прочитать до первого сообщения</div>
