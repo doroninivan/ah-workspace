@@ -329,6 +329,10 @@ a:hover{text-decoration:underline;}
 .qgrp.blk{border-left:3px solid #d93025;} .qgrp.blk>summary{color:#b3261e;}
 .qgrp.imp{border-left:3px solid #e0a800;} .qgrp.imp>summary{color:#9a7500;}
 .qgrp.min{border-left:3px solid #7a8aa0;} .qgrp.min>summary{color:#5c6b80;}
+.ctbl{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--sh);font-size:13px;}
+.ctbl th{text-align:left;background:#f0f3f7;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.04em;padding:10px 13px;}
+.ctbl td{padding:11px 13px;border-top:1px solid var(--line);vertical-align:top;line-height:1.5;}
+.ctbl tr:hover td{background:#f7faff;}
 footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);}
 </style>
 </head>
@@ -1076,232 +1080,56 @@ This is part of a national pilot, launched on the President's mandate, to bring 
 
 <!-- ===== ВОРОНКА ===== -->
 <div class="panel" id="funnel">
-  <div class="kick">Шаг 3 · Аутрич · исполнение и статистика</div>
+  <div class="kick">Шаг 3 · Аутрич · исполнение</div>
 
   <div class="bc-hero" style="background:linear-gradient(125deg,#06182e 0%,#0a3d6e 45%,#0a66c2 90%);">
-    <div class="tag">Воронка · пилот Дубай</div>
-    <h2>Аутрич — воронка и цепочки</h2>
-    <p>Здесь — <b>чем</b> пишем и <b>как</b> идёт отправка. Портрет аудитории (кого бьём) — во вкладке <b>Аутрич</b>. Цифры воронки ведём вручную из трекера в Google Sheets (данные контактов не публикуем — на странице только сводка).</p>
+    <div class="tag">Согласованный вариант</div>
+    <h2>Как устроен аутрич</h2>
+    <p>Здесь — общий принцип: кто кому пишет, по каким правилам и с каким ритмом. Конкретные люди, тексты под каждого, статусы и воронка — в <b>закрытой части</b> (ссылка внизу), потому что там реальные персональные данные, а эта страница публичная.</p>
   </div>
 
-  <div class="sec-title">Счётчик — пилотная выборка (Дубай)</div>
-  <div class="note" style="margin-bottom:14px;">Первая выборка: <b>15 профилей</b> — Нур 10 (фаундеры 5 + инвесторы 5), Асхат 5 (CEO IT). Собраны скрейпером Apify (No Cookies — аккаунты команды не затронуты). Персональный список — в приватном файле <code>outreach_pilot_dubai.html</code>, не на дашборде. Ниже обновляем по мере отправки.</div>
-
-  <div style="background:#fff;border-radius:12px;box-shadow:var(--sh);padding:20px 22px 16px;margin-bottom:14px;">
-    <div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px;">
-      <div><div style="font-size:26px;font-weight:800;color:#0a66c2;">15</div><div style="font-size:12px;color:#8a94a3;">найдено</div></div>
-      <div><div style="font-size:26px;font-weight:800;">0</div><div style="font-size:12px;color:#8a94a3;">отправлено</div></div>
-      <div><div style="font-size:26px;font-weight:800;">0</div><div style="font-size:12px;color:#8a94a3;">принято</div></div>
-      <div><div style="font-size:26px;font-weight:800;">0</div><div style="font-size:12px;color:#8a94a3;">ответили</div></div>
-      <div><div style="font-size:26px;font-weight:800;color:#137333;">0</div><div style="font-size:12px;color:#8a94a3;">в консьерж</div></div>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:9px;">
-      <div style="width:150px;font-size:13px;text-align:right;color:#444;">Найдено</div>
-      <div style="flex:1;background:#eef2f7;border-radius:6px;height:30px;position:relative;">
-        <div style="width:100%;background:#0a66c2;height:100%;border-radius:6px;min-width:34px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;color:#fff;font-weight:700;font-size:13px;">15</div>
-      </div>
-      <div style="width:52px;font-size:12px;color:#8a94a3;"></div>
-    </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:9px;">
-      <div style="width:150px;font-size:13px;text-align:right;color:#444;">Коннект отправлен</div>
-      <div style="flex:1;background:#eef2f7;border-radius:6px;height:30px;position:relative;">
-        <div style="width:6%;background:#2a7de1;height:100%;border-radius:6px;min-width:34px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;color:#fff;font-weight:700;font-size:13px;">0</div>
-      </div>
-      <div style="width:52px;font-size:12px;color:#8a94a3;">0%</div>
-    </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:9px;">
-      <div style="width:150px;font-size:13px;text-align:right;color:#444;">Принято</div>
-      <div style="flex:1;background:#eef2f7;border-radius:6px;height:30px;position:relative;">
-        <div style="width:6%;background:#3f93d6;height:100%;border-radius:6px;min-width:34px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;color:#fff;font-weight:700;font-size:13px;">0</div>
-      </div>
-      <div style="width:52px;font-size:12px;color:#8a94a3;">0%</div>
-    </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:9px;">
-      <div style="width:150px;font-size:13px;text-align:right;color:#444;">Ответили</div>
-      <div style="flex:1;background:#eef2f7;border-radius:6px;height:30px;position:relative;">
-        <div style="width:6%;background:#5aa9cb;height:100%;border-radius:6px;min-width:34px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;color:#fff;font-weight:700;font-size:13px;">0</div>
-      </div>
-      <div style="width:52px;font-size:12px;color:#8a94a3;">0%</div>
-    </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:9px;">
-      <div style="width:150px;font-size:13px;text-align:right;color:#444;">Передано в консьерж</div>
-      <div style="flex:1;background:#eef2f7;border-radius:6px;height:30px;position:relative;">
-        <div style="width:6%;background:#137333;height:100%;border-radius:6px;min-width:34px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;color:#fff;font-weight:700;font-size:13px;">0</div>
-      </div>
-      <div style="width:52px;font-size:12px;color:#8a94a3;">0%</div>
-    </div>
-    <div style="font-size:12px;color:#8a94a3;margin-top:10px;border-top:1px solid var(--line);padding-top:10px;">Обновлено: 16.07.2026 · старт отправки. Правило: коннект без welcome note (лимит 3–5 записок/мес), первое сообщение — сразу после принятия. По каждому участнику воронку смотрим в трекере <code>outreach_tracker.csv</code>.</div>
+  <div class="sec-title">Согласованный вариант</div>
+  <div class="tbl-wrap" style="overflow-x:auto;">
+  <table class="ctbl">
+    <thead><tr><th>Цепочка</th><th>Аудитория</th><th>Ведёт</th><th>Оффер</th></tr></thead>
+    <tbody>
+      <tr><td><b>01</b></td><td>Фаундеры IT-стартапов (1–50)</td><td>Нур</td><td>компания за 7 дней · 0% налог на IT · рынки СНГ, Китая и ЮВА · Base Camp</td></tr>
+      <tr><td><b>02</b></td><td>CEO / руководители IT-компаний (11–200)</td><td>Асхат</td><td>вторая база · 0% налог на IT · статус для команды · IT-экспорт</td></tr>
+      <tr><td><b>03</b></td><td>Инвесторы и бизнес-ангелы</td><td>Нур</td><td>дилфлоу региона · доступ к резидентам · питч-сессии</td></tr>
+      <tr><td style="color:var(--muted);">—</td><td>IT-специалисты (Digital Nomad Residency)</td><td>Лана</td><td><b>inbound</b>, не аутрич — приходят сами на контент</td></tr>
+    </tbody>
+  </table>
   </div>
+  <div class="note" style="margin-top:12px;"><b>Позиционирование:</b> ничего не продаём. Astana Hub — инновационный кластер Казахстана, его KPI — число компаний-резидентов и объём IT-экспорта, поэтому участие и сопровождение бесплатные. Рамка — возможность и рост («вторая база», «выход на рынки»), не переезд. Термины «технопарк» и «государственный» не используем.</div>
 
-
-  <div class="sec-title">Разбивка по участникам</div>
-  <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px;">
-<div style="flex:1;min-width:270px;background:#fff;border-radius:12px;box-shadow:var(--sh);border-top:3px solid #137333;padding:15px 17px;">
-      <div style="font-weight:700;font-size:15px;">Нур</div>
-      <div style="font-size:11.5px;color:#8a94a3;margin-bottom:11px;">цепочки 01 фаундеры (5) + 03 инвесторы (5)</div>
-      <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
-        <div style="width:74px;font-size:11.5px;text-align:right;color:#5c6b80;">Найдено</div>
-        <div style="flex:1;background:#eef2f7;border-radius:5px;height:22px;">
-          <div style="width:100%;background:#137333;opacity:1;height:100%;border-radius:5px;min-width:26px;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-weight:700;font-size:11.5px;">10</div>
-        </div></div><div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
-        <div style="width:74px;font-size:11.5px;text-align:right;color:#5c6b80;">Отправлено</div>
-        <div style="flex:1;background:#eef2f7;border-radius:5px;height:22px;">
-          <div style="width:6%;background:#137333;opacity:0.82;height:100%;border-radius:5px;min-width:26px;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-weight:700;font-size:11.5px;">0</div>
-        </div></div><div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
-        <div style="width:74px;font-size:11.5px;text-align:right;color:#5c6b80;">Принято</div>
-        <div style="flex:1;background:#eef2f7;border-radius:5px;height:22px;">
-          <div style="width:6%;background:#137333;opacity:0.82;height:100%;border-radius:5px;min-width:26px;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-weight:700;font-size:11.5px;">0</div>
-        </div></div><div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
-        <div style="width:74px;font-size:11.5px;text-align:right;color:#5c6b80;">Ответили</div>
-        <div style="flex:1;background:#eef2f7;border-radius:5px;height:22px;">
-          <div style="width:6%;background:#137333;opacity:0.82;height:100%;border-radius:5px;min-width:26px;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-weight:700;font-size:11.5px;">0</div>
-        </div></div><div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
-        <div style="width:74px;font-size:11.5px;text-align:right;color:#5c6b80;">Консьерж</div>
-        <div style="flex:1;background:#eef2f7;border-radius:5px;height:22px;">
-          <div style="width:6%;background:#137333;opacity:0.82;height:100%;border-radius:5px;min-width:26px;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-weight:700;font-size:11.5px;">0</div>
-        </div></div>
-    </div><div style="flex:1;min-width:270px;background:#fff;border-radius:12px;box-shadow:var(--sh);border-top:3px solid #0a66c2;padding:15px 17px;">
-      <div style="font-weight:700;font-size:15px;">Асхат</div>
-      <div style="font-size:11.5px;color:#8a94a3;margin-bottom:11px;">цепочка 02 · CEO IT-компаний (5)</div>
-      <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
-        <div style="width:74px;font-size:11.5px;text-align:right;color:#5c6b80;">Найдено</div>
-        <div style="flex:1;background:#eef2f7;border-radius:5px;height:22px;">
-          <div style="width:100%;background:#0a66c2;opacity:1;height:100%;border-radius:5px;min-width:26px;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-weight:700;font-size:11.5px;">5</div>
-        </div></div><div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
-        <div style="width:74px;font-size:11.5px;text-align:right;color:#5c6b80;">Отправлено</div>
-        <div style="flex:1;background:#eef2f7;border-radius:5px;height:22px;">
-          <div style="width:6%;background:#0a66c2;opacity:0.82;height:100%;border-radius:5px;min-width:26px;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-weight:700;font-size:11.5px;">0</div>
-        </div></div><div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
-        <div style="width:74px;font-size:11.5px;text-align:right;color:#5c6b80;">Принято</div>
-        <div style="flex:1;background:#eef2f7;border-radius:5px;height:22px;">
-          <div style="width:6%;background:#0a66c2;opacity:0.82;height:100%;border-radius:5px;min-width:26px;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-weight:700;font-size:11.5px;">0</div>
-        </div></div><div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
-        <div style="width:74px;font-size:11.5px;text-align:right;color:#5c6b80;">Ответили</div>
-        <div style="flex:1;background:#eef2f7;border-radius:5px;height:22px;">
-          <div style="width:6%;background:#0a66c2;opacity:0.82;height:100%;border-radius:5px;min-width:26px;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-weight:700;font-size:11.5px;">0</div>
-        </div></div><div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
-        <div style="width:74px;font-size:11.5px;text-align:right;color:#5c6b80;">Консьерж</div>
-        <div style="flex:1;background:#eef2f7;border-radius:5px;height:22px;">
-          <div style="width:6%;background:#0a66c2;opacity:0.82;height:100%;border-radius:5px;min-width:26px;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-weight:700;font-size:11.5px;">0</div>
-        </div></div>
+  <div class="sec-title">Общие паттерны</div>
+  <div class="geo3">
+    <div class="geocard">
+      <div class="hd"><span class="dot"></span>Ритм · 3 касания</div>
+      <div class="li2">Коннект → сообщение 1 (в день принятия) → follow-up 1 (через 3–4 дня) → follow-up 2 (через 7–10 дней). Дальше стоп.</div>
+      <div class="ang">Любой ответ, даже «не сейчас», выключает шаблоны — дальше вручную.</div>
+    </div>
+    <div class="geocard">
+      <div class="hd"><span class="dot"></span>Лимиты · без Premium</div>
+      <div class="li2">Персональных записок к коннекту — 3–5 в месяц. Поэтому коннект шлём <b>без записки</b>, а первое сообщение — сразу после принятия.</div>
+      <div class="ang">Коннектов не больше 10–15 в день на аккаунт.</div>
+    </div>
+    <div class="geocard">
+      <div class="hd"><span class="dot"></span>Правила · ToS</div>
+      <div class="li2">Пишет вручную сам участник — не бот, не массовая рассылка. 1 контакт = 1 участник = 1 цепочка.</div>
+      <div class="ang">Перед отправкой — одна живая деталь из профиля своими словами.</div>
     </div>
   </div>
 
-  <div class="sec-title">Запуск — прочитать до первого сообщения</div>
-  <div class="note" style="border-left:3px solid #d93025;background:#fdeeec;">
-    <strong style="color:#b3261e;">Блокер: без Premium цепочки не отправить.</strong> По <a href="https://www.linkedin.com/help/linkedin/answer/a563153" target="_blank" style="color:var(--blue);font-weight:600;">справке LinkedIn</a>: бесплатный аккаунт может послать <b>3–5 персонализированных приглашений в месяц</b> (не в день), лимит записки — <b>200 знаков</b>, у Premium безлимит. Плюс <b>commercial use limit</b>: бесплатный поиск профилей отключается после нескольких десятков просмотров в месяц — 20–30 нужных людей по фильтрам просто не найти.<br><br>
-    <b>Путь A (рекомендуем):</b> Sales Navigator ~$99/мес за место — снимает оба лимита и даёт фильтры, без которых «сигналы» из архетипов не отработать. Минимум Нуру: у него две цепочки и Base Camp.<br>
-    <b>Путь B (бесплатно, работает сегодня):</b> коннект <b>без записки</b> — лимитом не ограничен (~100–200/нед). Весь смысл несёт «Сообщение 1» после принятия, а 3–5 записок тратим на самые ценные контакты.
+  <div class="sec-title">Закрытая часть — конкретные люди</div>
+  <div class="note" style="border-left:3px solid var(--blue);background:#eef5fd;">
+    <div style="font-size:15px;font-weight:700;margin-bottom:6px;">🔒 Приватная страница аутрича</div>
+    Пилотная выборка (Дубай, 15 профилей) с воронкой, статусами по стадиям, карточками контактов, готовыми сообщениями и личными заметками. Страница под паролем и зашифрована — реальные персональные данные на публичный дашборд не выносим.<br><br>
+    <a href="outreach-private.html" target="_blank" style="display:inline-block;background:var(--blue);color:#fff;font-weight:700;padding:10px 20px;border-radius:100px;text-decoration:none;">Открыть закрытую часть ↗</a>
+    <div style="font-size:12.5px;color:var(--muted);margin-top:10px;">Пароль выдаётся отдельно. Статусы и заметки хранятся в браузере (localStorage), между устройствами не синхронизируются.</div>
   </div>
 
-  <div class="note" style="border-left:3px solid #e0a800;">
-    <strong>Сроки Base Camp не бьются с холодной цепочкой.</strong> Дедлайн 31 июля — это ~2 недели. Полный цикл (коннект → принятие 3–7 дней → сообщение → FU1 → FU2) занимает 15–17 дней, то есть <b>FU2 придёт после закрытия заявок</b>, а первая группа стартует 1 августа.<br><br>
-    <b>Что делаем:</b> в холодных цепочках ведём <b>юрисдикцией</b> — у неё нет дедлайна. Base Camp даём бонусом «если успеете». Сам Base Camp пушим по <b>тёплым</b> контактам: действующие резиденты, входящие заявки, личная сеть команды.
-  </div>
-
-  <div class="note">
-    <strong>Правила отправки:</strong> вручную, без автоматизации (ToS) · <b>10–15 коннектов в день</b> на аккаунт, не больше · 1 контакт = 1 участник = 1 цепочка, двум участникам одного человека не писать · перед отправкой вписать в трекер одну реальную деталь из профиля (пусто = не отправлять) · каждый шаг отмечать в трекере в тот же день.<br><br>
-    <strong>Трекер:</strong> статичная страница состояние не хранит, поэтому ведём в Google Sheets — шаблон <code>outreach_tracker.csv</code> в папке проекта (Файл → Импорт → Загрузить). Нет строки = не писали. Ключ записи — ссылка на профиль, по ней же ловим дубли между участниками. Полная инструкция — <code>outreach_launch.md</code>.
-  </div>
-
-  <div class="sec-title">Цепочки сообщений — по трём аудиториям (на русском)</div>
-  <div class="note" style="margin-bottom:14px;"><b>Правила (версия клиента, июль 2026):</b> Astana Hub — «инновационный кластер Казахстана», Trusted Kazakhstan — «инициатива». Слова «технопарк» и «государственный» <b>не используем</b>. Цифры: <b>2 200+ участников</b> (данные клиента, июль 2026) · <b>свыше 490</b> с иностранным участием · экспорт в <b>111 стран</b> · совокупный доход резидентов <b>более $1,7 млрд</b> · первый единорог <b>Higgsfield AI</b> · регистрация 7 дней · 0% налог на IT. Без расчётов экономии и без дат по налоговому режиму. <b style="color:#b3261e;">«$1,8 млрд IT-экспорта» пока не используем — уточняется метрика (см. блок внизу страницы).</b> <b>Лимит connect-заметки — 200 знаков</b> (у команды нет Premium; считать с подставленным именем, не с {Имя}). Ритм: сообщение 1 в день коннекта · follow-up 1 через 3–4 дня · follow-up 2 через 7–10 дней, дальше стоп (контакт остаётся на ретаргетинг контентом). Любой ответ, даже «не сейчас», переводит диалог в ручной режим — шаблоны дальше не используем.</div>
-
-  <div class="lsec" style="border-left:3px solid var(--green);">
-    <div style="font-weight:700;font-size:15px;letter-spacing:-.01em;margin-bottom:2px;">Заготовка · ответ на «а в чём подвох?»</div>
-    <div style="font-size:12.5px;color:var(--muted);margin-bottom:8px;">Формулировка клиента. Держать под рукой: этот вопрос прилетает почти всегда, когда говоришь «бесплатно».</div>
-    <div class="msg alt"><span class="who">Ответ на возражение · в любой цепочке</span>Astana Hub — инновационный кластер Казахстана, наша задача — рост IT-экосистемы и IT-экспорта страны. Мы зарабатываем не на участниках: KPI кластера — количество компаний-резидентов и объём экспорта, поэтому участие и сопровождение бесплатные.</div>
-  </div>
-
-  <div class="lsec" style="border-left:3px solid #e0a800;">
-    <div style="font-weight:700;font-size:15px;letter-spacing:-.01em;margin-bottom:2px;">Base Camp · даты и ссылка</div>
-    <div style="font-size:12.5px;color:var(--muted);margin-bottom:8px;">Актуален, служит уникальным предложением. Участие бесплатное. Даты предварительные.</div>
-    <div class="msg"><span class="who">Две группы · август 2026</span>1–15 августа · 16–31 августа. По 20–30 человек в группе.
-
-<b>Участие бесплатное. Дедлайн подачи заявок — 31 июля.</b> Страница с описанием программы появится ориентировочно на следующей неделе — как только будет, ссылаемся на неё, а не на голую форму.
-
-<b>Ссылка ведёт сразу на форму регистрации</b>, минуя описание программы. Поэтому: сначала даём информацию в переписке, ссылку присылаем только после явного интереса («да, расскажите» / «пришлите»). Холодной ссылкой в первом сообщении не бьём — человек попадёт на форму, не поняв, куда подаётся.
-
-Ссылка: <a href="https://form.astanahub.com/form/view/245499?lang=en&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" style="color:var(--blue);font-weight:600;word-break:break-all;">form.astanahub.com/form/view/245499</a></div>
-  </div>
-
-  <div class="lsec">
-    <div style="font-weight:700;font-size:15px;letter-spacing:-.01em;margin-bottom:2px;">01 · Фаундеры и ко-фаундеры стартапов — ведёт Нур</div>
-    <div style="font-size:12.5px;color:var(--muted);margin-bottom:4px;">Founder / Co-Founder · SaaS, AI, Gamedev, Fintech · 1–50 чел<br><b>Оффер:</b> Base Camp (бесплатно, до 31 июля) · компания за 7 дней · 0% налог на IT · рынки СНГ, Китая и ЮВА</div>
-    <div class="sig" style="margin-bottom:8px;">Кто это: основатели ранних и растущих стартапов в Дубае, на Кипре, в Тбилиси, Ереване, Белграде, Стамбуле. Сравнивают юрисдикции, считают экономику, ищут выход на новые рынки. Сигнал: Founder/CEO в заголовке, профиль на русском, релокант-хаб в локации.</div>
-    <div class="msg alt"><span class="who">Connect-заметка · 186 / 200 симв.</span>{Имя}, добрый день! Я в Astana Hub, инновационном кластере Казахстана: помогаю фаундерам открыть компанию за 7 дней, 0% налог на IT, выход на рынки СНГ, Китая и ЮВА. Буду рад знакомству.</div>
-    <div class="msg alt"><span class="who">Сообщение 1 · сразу после принятия коннекта</span>{Имя}, спасибо за коннект!
-
-Пару слов о том, чем могу быть полезен. В рамках Trusted Kazakhstan я помогаю фаундерам открывать компании в Казахстане — сейчас это одна из самых недооценённых юрисдикций для стартапа: регистрация занимает 7 дней, налог на IT — 0%, и с одной базы вы работаете сразу на рынки СНГ, Китая и Юго-Восточной Азии.
-
-Сразу отвечу на резонный вопрос: мы ничего не продаём. KPI кластера — число компаний-резидентов и объём IT-экспорта страны, поэтому участие и сопровождение бесплатные.
-
-В августе мы собираем Base Camp — месяц в Астане для небольшой группы фаундеров: за это время вы регистрируете компанию, знакомитесь с инвесторами и резидентами экосистемы. Две группы — 1–15 и 16–31 августа, по 20–30 человек. Участие бесплатное, заявки принимаем до 31 июля.
-
-Скажите, актуален ли для вас сейчас вопрос юрисдикции? Если да — расскажу, как всё устроено, под вашу ситуацию.</div>
-    <div class="msg alt"><span class="who">Follow-up 1 · через 3–4 дня, если нет ответа</span>{Имя}, понимаю, что сообщений в LinkedIn много — поэтому коротко, только цифры.
-
-Astana Hub сегодня — это 2 200+ компаний-участников, из них свыше 490 с иностранным участием. Резиденты экспортируют IT-услуги в 111 стран, их совокупный доход превысил $1,7 млрд. Фаундеры приходят к нам в первую очередь за скоростью: через неделю после подачи у вас работающее юрлицо, дальше банк, льготы и первые интро в экосистеме.
-
-Могу прислать one-pager по Trusted Kazakhstan и программе Base Camp — чтение на две минуты, и вы сами решите, интересно ли обсуждать дальше. Отправить?</div>
-    <div class="msg alt"><span class="who">Follow-up 2 · через 7–10 дней · закрытие с открытой дверью</span>{Имя}, вижу, что сейчас, похоже, не самое подходящее время — это нормально, вопрос юрисдикции редко бывает срочным, пока не станет очень срочным.
-
-Оставлю за собой только одно: когда он встанет — перед раундом, при выходе на новые рынки или когда текущая база начнёт мешать расти, — напишите мне. Разберу вашу ситуацию предметно и честно скажу, что Казахстан вам даст, а чего не даст.
-
-Успехов с продуктом!</div>
-  </div>
-
-  <div class="lsec">
-    <div style="font-weight:700;font-size:15px;letter-spacing:-.01em;margin-bottom:2px;">02 · CEO и руководители IT-компаний — ведёт Асхат</div>
-    <div style="font-size:12.5px;color:var(--muted);margin-bottom:4px;">CEO / CTO / COO / Owner · IT Services, Software, Outsourcing · 11–200 чел<br><b>Оффер:</b> вторая база · 0% налог на IT · статус для команды · IT-экспорт</div>
-    <div class="sig" style="margin-bottom:8px;">Кто это: руководители работающих компаний с командой. Считают юнит-экономику, думают о второй базе для части контрактов и сотрудников, для них важны предсказуемость и статус людей. Сигнал: C-level в заголовке, компания 11–200, Лимасол/Дубай/Стамбул, тема IT-экспорта.</div>
-    <div class="msg"><span class="who">Connect-заметка · 176 / 200 симв.</span>{Имя}, добрый день! Я юрист в Astana Hub, инновационном кластере Казахстана. Сопровождаю IT-компании: юрлицо за 7 дней, 0% налог на IT, статус для команды. Буду рад знакомству.</div>
-    <div class="msg"><span class="who">Сообщение 1 · сразу после принятия коннекта</span>{Имя}, спасибо, что приняли!
-
-Напишу по существу. В рамках Trusted Kazakhstan я сопровождаю IT-компании на пути в Казахстан — от регистрации до полного статуса резидента Astana Hub — и чаще всего ко мне приходят руководители компаний на 10–200 человек. Причины обычно три:
-
-— экономика: 0% налог на IT и понятный режим для экспорта услуг;
-— скорость: юрлицо за 7 дней и рабочий банковский счёт без многомесячных проверок;
-— команда: визы и резидентство для сотрудников и их семей оформляются централизованно, а не через частных агентов поодиночке.
-
-По образованию я юрист и веду каждую компанию сам, поэтому структуру собираем сразу правильно — так, чтобы льготы не потерялись через год. И сразу закрою резонный вопрос: мы ничего не продаём. KPI кластера — число компаний-резидентов и объём IT-экспорта страны, поэтому сопровождение бесплатное.
-
-{Имя}, есть ли у вас сейчас в повестке вопрос второй базы или оптимизации структуры? Если да, предлагаю созвон на 20 минут — покажу, как это устроено, на примере компаний вашего профиля.</div>
-    <div class="msg"><span class="who">Follow-up 1 · через 3–4 дня, если нет ответа</span>{Имя}, добавлю деталь, которая обычно снимает главный вопрос руководителей.
-
-Вторая база в Казахстане не требует ломать текущую структуру. Типовой сценарий наших резидентов: головная компания остаётся на месте, а через казахстанское юрлицо идут те контракты и та часть команды, где это выгоднее по налогам и найму. Это управляемый шаг, а не «всё или ничего».
-
-Если созвон пока неудобен — пришлю короткий разбор текстом: как компании вашего размера обычно выстраивают такую структуру и какие цифры получают на выходе. Прислать?</div>
-    <div class="msg"><span class="who">Follow-up 2 · через 7–10 дней · закрытие с открытой дверью</span>{Имя}, не буду больше занимать ваше внимание — у руководителя компании его и так немного.
-
-Просто оставлю контакт рабочим: если вопрос юрисдикции, налоговой нагрузки или статуса команды поднимется — на планировании года или при следующем крупном контракте, — напишите. Разберём вашу ситуацию предметно, с цифрами и сроками.
-
-Хорошей недели вам и команде!</div>
-  </div>
-
-  <div class="lsec">
-    <div style="font-weight:700;font-size:15px;letter-spacing:-.01em;margin-bottom:2px;">03 · Инвесторы и бизнес-ангелы — ведёт Нур</div>
-    <div style="font-size:12.5px;color:var(--muted);margin-bottom:4px;">VC / Angel / Partner · интерес к emerging markets и Центральной Азии<br><b>Оффер:</b> дилфлоу региона · доступ к резидентам · питч-сессии · Base Camp</div>
-    <div class="sig" style="margin-bottom:8px;">Кто это: партнёры фондов и ангелы, которые ищут качественный пайплайн вне перегретых рынков. Ценят конкретику: стадии, вертикали, цифры экосистемы. Сигнал: Investor/Partner/Angel в заголовке, портфель или интерес в emerging markets, СНГ-бэкграунд.</div>
-    <div class="msg warm"><span class="who">Connect-заметка · 189 / 200 симв.</span>{Имя}, добрый день! Astana Hub — инновационный кластер Казахстана: 2 200+ резидентов, первый единорог — Higgsfield AI. Развиваю работу с инвесторами. Если регион на радаре — будем на связи.</div>
-    <div class="msg warm"><span class="who">Сообщение 1 · сразу после принятия коннекта</span>{Имя}, спасибо за коннект!
-
-Пару слов о том, почему написал именно вам. Центральная Евразия — один из немногих регионов, где качественный дилфлоу ещё не перегрет конкуренцией между фондами, а Astana Hub — его главная точка входа: 2 200+ компаний-участников, из них свыше 490 с иностранным участием. Резиденты экспортируют IT-услуги в 111 стран, их совокупный доход превысил $1,7 млрд, и в экосистеме появился первый казахстанский единорог — Higgsfield AI.
-
-В рамках Trusted Kazakhstan мы регулярно знакомим инвесторов с экосистемой: собираем подборки стартапов под конкретный инвестиционный фокус, организуем питч-сессии и интро с фаундерами. В августе проходит Base Camp — месяц, когда в Астану приезжает отобранная группа основателей, и для инвесторов это самый концентрированный доступ к пайплайну региона.
-
-{Имя}, какие стадии и вертикали вам сейчас интересны? Соберу под них короткую подборку резидентов — посмотрите, есть ли здесь ваш профиль сделок.</div>
-    <div class="msg warm"><span class="who">Follow-up 1 · через 3–4 дня, если нет ответа</span>{Имя}, сделаю предложение максимально конкретным.
-
-Если поделитесь тезисом — стадия, средний чек, вертикали, — я в течение недели пришлю подборку из 5–7 резидентов, которые под него подходят: короткое описание, стадия, чем интересны. Дальше сами решите, с кем познакомиться.
-
-Это стандартная часть работы Trusted Kazakhstan с фондами — наша задача, чтобы правильные инвесторы видели правильные компании. Какой у вас сейчас фокус?</div>
-    <div class="msg warm"><span class="who">Follow-up 2 · через 7–10 дней · закрытие с открытой дверью</span>{Имя}, судя по всему, Центральная Евразия пока не в фокусе — это понятно, у каждого фонда своя география.
-
-Оставлю дверь открытой: когда решите посмотреть на регион, напишите — организую знакомство с экосистемой изнутри, от подборки компаний до встреч с фаундерами на месте. Рынок растёт быстро, и ранний вход здесь пока стоит дешевле, чем будет через пару лет.
-
-Хороших сделок!</div>
-  </div>
-
-  <div class="note" style="border-left:3px solid var(--green);"><strong>Блокеры сняты (ответы клиента, июль 2026):</strong> ДНР — намеренно вне аутрича, специалистов берём массовыми каналами · инвесторов ведёт <b>Нур</b> · Base Camp актуален, две группы 1–15 и 16–31 августа · бесплатность объясняем через KPI кластера (заготовка выше). <b>Осталось:</b> цифры приведены к пресс-релизу за 2025 — «$1,8 млрд IT-экспорта» и «2 200+ резидентов» источником не подтверждаются, см. блок внизу страницы.</div>
-
-  <div class="note"><strong>Как это работает:</strong> профили-архетипы выше — примеры «идеального адресата», не конкретные люди. Реальных находим через LinkedIn / Sales Navigator по сигналам (должность + локация + индустрия + язык профиля). Пишет вручную сам участник команды (не бот, не bulk — ToS). Детальный таргетинг для рекламы — во вкладке <b>Base Camp</b> и файле <b>basecamp_audience_brief.md</b>; шаблоны сообщений — <b>basecamp_outreach_messages.md</b>.</div>
+  <div class="note" style="border-left:3px solid #e0a800;"><b>Открытый вопрос по цифрам:</b> «$1,8 млрд IT-экспорта» источником не подтверждается — в пресс-релизе за 2025 экспорт = $633,8 млн, а $1,7 млрд это совокупный доход. В текстах пока стоит доход и «экспорт в 111 стран». Нужно одно слово от клиента: $1,8 млрд — это доход (ставим) или экспорт (нужна публичная ссылка).</div>
 </div>
 
 <!-- ===== BASE CAMP ===== -->
