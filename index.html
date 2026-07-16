@@ -308,6 +308,27 @@ a:hover{text-decoration:underline;}
 .persona .ft{border-top:1px solid var(--line);padding:9px 15px;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11.5px;}
 .persona .ft .by{font-weight:700;color:var(--blue);}
 .persona .ft .of{color:var(--muted);}
+/* ==== На согласование ==== */
+.appr{border-top:1px solid var(--line);margin-top:34px;padding-top:26px;}
+.appr h3{font-size:19px;letter-spacing:-.02em;margin:0 0 4px;}
+.appr .sub{font-size:13.5px;color:var(--muted);margin-bottom:18px;line-height:1.55;}
+.qgrp{margin-bottom:14px;border-radius:12px;background:#fff;box-shadow:var(--sh);overflow:hidden;}
+.qgrp>summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px;user-select:none;}
+.qgrp>summary::-webkit-details-marker{display:none;}
+.qgrp>summary .chev{font-size:10px;color:var(--muted);transition:transform .18s;}
+.qgrp[open]>summary .chev{transform:rotate(90deg);}
+.qgrp[open]>summary{border-bottom:1px solid var(--line);}
+.qgrp>summary .ct{margin-left:auto;font-size:11.5px;font-weight:600;color:var(--muted);background:#eef3f8;padding:3px 11px;border-radius:100px;}
+.qgrp .bd{padding:6px 18px 16px;}
+.qi{padding:13px 0;border-bottom:1px dashed var(--line);}
+.qi:last-child{border-bottom:none;}
+.qi .q{font-weight:650;font-size:14px;line-height:1.5;margin-bottom:5px;}
+.qi .q b{color:var(--blue);}
+.qi .cx{font-size:13px;color:var(--muted);line-height:1.6;}
+.qi .cx b{color:var(--text);font-weight:600;}
+.qgrp.blk{border-left:3px solid #d93025;} .qgrp.blk>summary{color:#b3261e;}
+.qgrp.imp{border-left:3px solid #e0a800;} .qgrp.imp>summary{color:#9a7500;}
+.qgrp.min{border-left:3px solid #7a8aa0;} .qgrp.min>summary{color:#5c6b80;}
 footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);}
 </style>
 </head>
@@ -1125,7 +1146,7 @@ Astana Hub сегодня — это 2 200+ компаний-резиденто�
 Хороших сделок!</div>
   </div>
 
-  <div class="note" style="border-left:3px solid #e0a800;"><strong>На согласование клиенту:</strong> в документе с цепочками (июль 2026) нет цепочки под <b>Digital Nomad Residency</b>, хотя раньше ДНР был назван основным фокусом. Исходим из того, что это сделано намеренно: ДНР набирает объём через inbound (контент Ланы + заявки), а вручную такой поток не собрать — поэтому пометили сегмент как inbound-канал. Если ДНР нужен и в аутриче — допишем четвёртую цепочку для Ланы. Второе: <b>Base Camp</b> вернулся в цепочки Нура (фаундеры и инвесторы), хотя в июне его просили убрать как неактуальный — подтвердить.</div>
+  <div class="note" style="border-left:3px solid #e0a800;"><strong>Открытые вопросы по этой вкладке:</strong> ДНР вне цепочек (inbound или нужна 4-я цепочка?) · инвесторов ведёт Нур или Лана? · Base Camp — даты и ссылка · убрали «государственный» — чем объясняем бесплатность? Полный список с контекстом — <b>внизу страницы, блок «На согласование с клиентом»</b>.</div>
 
   <div class="note"><strong>Как это работает:</strong> профили-архетипы выше — примеры «идеального адресата», не конкретные люди. Реальных находим через LinkedIn / Sales Navigator по сигналам (должность + локация + индустрия + язык профиля). Пишет вручную сам участник команды (не бот, не bulk — ToS). Детальный таргетинг для рекламы — во вкладке <b>Base Camp</b> и файле <b>basecamp_audience_brief.md</b>; шаблоны сообщений — <b>basecamp_outreach_messages.md</b>.</div>
 </div>
@@ -1754,6 +1775,97 @@ That's the part I help with. If you're weighing a move, ask me the boring questi
   <div class="note"><strong>Язык:</strong> посты на английском — под англоязычные профили и международную аудиторию (как у конкурентов). Для таргета на СНГ (Дубай/Кипр) могу сделать русские версии. <strong>Заметка:</strong> в посте-истории Ланы нужен реальный кейс (страна фаундера, деталь, разрешение на публикацию) — сейчас обезличенный шаблон.</div>
 </div>
 
+</div>
+
+
+<div class="wrap">
+<div class="appr">
+  <div class="kick">Открытые вопросы · июль 2026</div>
+  <h3>На согласование с клиентом</h3>
+  <div class="sub">Собрано по всем материалам проекта: цепочки аутрича, профили, контент, Base Camp. Отсортировано по тому, что реально блокирует запуск. Отвечать можно прямо по номерам.</div>
+
+  <details class="qgrp blk" open>
+    <summary><span class="chev">▶</span> Блокеры — без ответа аутрич не запустить <span class="ct">5 вопросов</span></summary>
+    <div class="bd">
+      <div class="qi">
+        <div class="q"><b>1.</b> ДНР намеренно вне аутрича?</div>
+        <div class="cx">В документе с цепочками нет ни одной цепочки под Digital Nomad Residency, хотя раньше ДНР был назван основным фокусом. Мы исходим из того, что ДНР идёт <b>inbound</b> — через контент Ланы и заявки, вручную такой поток не собрать. Верно? Если ДНР нужен и в аутриче — потребуется четвёртая цепочка, ведёт Лана.</div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>2.</b> Цепочку инвесторов ведёт Нур или Лана?</div>
+        <div class="cx">В документе «ведёт Нур или Лана». Одну цепочку нельзя вести с двух профилей — нужно выбрать одного. У Ланы бэкграунд МИД, протокол и ДНР; у Нура — операции и продажи. <b>Предлагаем Нура.</b></div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>3.</b> Base Camp актуален? Нужны даты, цена и ссылка</div>
+        <div class="cx">Он вернулся в цепочки (фаундеры и инвесторы), хотя в июне его просили убрать у Нура как неактуальный. Если оставляем — нужны <b>точные даты, стоимость участия и ссылка на регистрацию</b>. В тексте уже стоит «в августе», «группа 20–30 человек, места разбирают быстро» — без ссылки цепочка обрывается на самом интересном.</div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>4.</b> Убрали «государственный» — чем объясняем, что бесплатно?</div>
+        <div class="cx">Новое правило запрещает слова «государственный» и «технопарк». Но раньше именно это было главным аргументом доверия: «мы ничего не продаём, потому что это госинициатива». Без него у адресата закономерно возникает <b>«а в чём подвох, что вы с этого имеете?»</b>. Чем отвечаем — только «инициатива Trusted Kazakhstan»?</div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>5.</b> Цифры 490+ международных и $1,8 млрд IT-экспорта — можно публично?</div>
+        <div class="cx">Числа новые, раньше в материалах их не было. Подтвердите источник и что их можно называть в переписке с холодными контактами.</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="qgrp imp">
+    <summary><span class="chev">▶</span> Важное — влияет на тексты, но не блокирует <span class="ct">7 вопросов</span></summary>
+    <div class="bd">
+      <div class="qi">
+        <div class="q"><b>6.</b> «Технопарк» в названии юрлица оставляем?</div>
+        <div class="cx">Правило запрещает слово, но в Experience у всех троих стоит официальное <b>«Astana Hub International Tech Park»</b>, а у Нура в About — «Kazakhstan's largest tech hub». Понимаем так: юридическое название оставляем, запрет только на русские формулировки в аутриче.</div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>7.</b> Запрет на «переезд» — сквозной или только для цепочек?</div>
+        <div class="cx">В личных постах на русском это живая речь: «взвешиваете переезд компании», «думаете про долгий переезд». Если правило сквозное для бренда — перепишем на «вторую базу» и «долгий статус», но посты потеряют человечность.</div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>8.</b> Личные посты на русском согласованы в принципе?</div>
+        <div class="cx">Новое направление: 9 постов от первого лица — кем участник был раньше, почему он в Astana Hub, что реально делает. Нужен ок в принципе, до правок по тексту. См. вкладку <b>Контент</b>.</div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>9.</b> Есть реальный кейс резидента?</div>
+        <div class="cx">«Истории из практики» сейчас на архетипах («фаундер из Дубая», «разработчик из Тбилиси»). С реальным именем, страной и цифрой они станут заметно сильнее — нужен согласованный кейс с разрешением на публикацию.</div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>10.</b> Асхат: какие рынки указываем?</div>
+        <div class="cx">В его профиле стоит «CIS / US / EU / MENA», в новых материалах — «СНГ, Китай, Юго-Восточная Азия». Приводим к единому?</div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>11.</b> «0% налог на IT» — формулировка точная?</div>
+        <div class="cx">И подтвердите, что <b>срок льготы не называем нигде</b> — по прошлой правке «до … года» убрано отовсюду.</div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>12.</b> Playrix как история резидента у Ланы</div>
+        <div class="cx">Это реальный резидент и есть разрешение упоминать?</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="qgrp min">
+    <summary><span class="chev">▶</span> Мелочи по профилям <span class="ct">4 вопроса</span></summary>
+    <div class="bd">
+      <div class="qi">
+        <div class="q"><b>13.</b> Офис один или два?</div>
+        <div class="cx">У Асхата — «Participant Regulation and Support Office», у Нура — «Participant Support Office». Это один офис или разные?</div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>14.</b> Нур: английский и дата старта</div>
+        <div class="cx">Уровень английского (в резюме без отметки, поставили «Working») и дата старта в Astana Hub — приняли <b>Aug 2024</b>, подтвердить.</div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>15.</b> Лана: URL и название роли</div>
+        <div class="cx">Почистить LinkedIn-URL до <b>/in/lana-nurkassynova</b> (сейчас с хвостом) и уточнить точное название роли/офиса.</div>
+      </div>
+      <div class="qi">
+        <div class="q"><b>16.</b> «500+ connections» у Асхата и Нура</div>
+        <div class="cx">У Ланы реально есть. У Асхата и Нура — набрать или убрать из превью, чтобы не расходилось с реальностью.</div>
+      </div>
+    </div>
+  </details>
+</div>
 </div>
 
 <footer>Astana Hub × Ivan Doronin · Trusted Kazakhstan · рабочая страница проекта</footer>
