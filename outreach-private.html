@@ -131,6 +131,8 @@ function buildCollapsible(){
   document.querySelectorAll('h2.grp').forEach(h=>{
     if(h.parentElement && h.parentElement.classList.contains('grpwrap')) return;
     const wrap=document.createElement('div'); wrap.className='grpwrap';
+    // стабильный ключ: только буквы имени участника, без счётчиков
+    wrap.dataset.grp=(h.textContent.split('·')[0]||'').replace(/[^А-Яа-яЁёA-Za-z]/g,'').slice(0,16);
     const body=document.createElement('div'); body.className='grp-body';
     h.parentNode.insertBefore(wrap,h); wrap.appendChild(h); wrap.appendChild(body);
     let n=wrap.nextSibling;
@@ -152,8 +154,7 @@ function toggleContact(c,force){
 function toggleGroup(w,force){
   const closed = force===undefined ? !w.classList.contains('closed') : force;
   w.classList.toggle('closed',closed);
-  const k=w.querySelector('h2.grp')?.textContent.replace(/\s+/g,'').slice(0,24);
-  lsSet('ahgrp_'+k,closed?'1':'0');
+  lsSet('ahgrp_'+(w.dataset.grp||''),closed?'1':'0');
 }
 function addControls(){
   if(document.querySelector('.ctrls')) return;
@@ -189,8 +190,7 @@ function initOutreach(){
   // восстановить свёрнутое состояние
   document.querySelectorAll('.contact').forEach(c=>{ if(lsGet('ahcol_'+c.dataset.id,'0')==='1') c.classList.add('closed'); });
   document.querySelectorAll('.grpwrap').forEach(w=>{
-    const k=w.querySelector('h2.grp')?.textContent.replace(/\s+/g,'').slice(0,24);
-    if(lsGet('ahgrp_'+k,'0')==='1') w.classList.add('closed');
+    if(lsGet('ahgrp_'+(w.dataset.grp||''),'0')==='1') w.classList.add('closed');
   });
   renderFunnel();
 }
