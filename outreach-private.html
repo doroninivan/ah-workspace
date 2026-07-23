@@ -43,6 +43,24 @@ h2.grp{font-size:16px;margin:26px 0 12px;border-bottom:2px solid var(--line);pad
 .copy:hover{border-color:var(--blue);color:var(--blue);}
 .note{margin-top:12px;} .ntext{width:100%;min-height:52px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px;color:var(--tx);font-family:inherit;font-size:12.5px;resize:vertical;}
 .foot{font-size:11px;color:#8a94a3;margin-top:30px;border-top:1px solid var(--line);padding-top:14px;}
+/* ---- сворачивание списков ---- */
+.ctrls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px;}
+.ctrls button{font-size:11.5px;font-weight:700;letter-spacing:.03em;padding:8px 14px;border:1px solid var(--line);border-radius:100px;background:#fff;color:var(--tx);cursor:pointer;font-family:inherit;}
+.ctrls button:hover{border-color:var(--blue);color:var(--blue);}
+.ctrls .hint{font-size:11.5px;color:var(--mut);}
+h2.grp{cursor:pointer;user-select:none;display:flex;align-items:center;gap:9px;}
+h2.grp:hover{color:var(--blue);}
+.gchev{font-size:11px;color:var(--mut);transition:transform .2s;display:inline-block;}
+.gcount{margin-left:auto;font-size:11.5px;font-weight:400;color:var(--mut);background:#eef3f8;padding:3px 11px;border-radius:100px;}
+.grpwrap.closed .gchev{transform:rotate(-90deg);}
+.grpwrap.closed .grp-body{display:none;}
+.chead-l{display:flex;gap:10px;align-items:flex-start;flex:1;min-width:0;}
+.ctoggle{flex:none;width:24px;height:24px;line-height:1;font-size:11px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--mut);cursor:pointer;font-family:inherit;transition:.15s;margin-top:1px;}
+.ctoggle:hover{border-color:var(--blue);color:var(--blue);}
+.contact.closed .ctoggle{transform:rotate(-90deg);}
+.contact.closed .cbody{display:none;}
+.contact.closed .crole,.contact.closed .cwhy,.contact.closed .flag{display:none;}
+.contact.closed{padding:12px 20px;}
 </style></head><body>
 <div class="gate" id="gate">
   <h1>🔒 Приватная выборка</h1>
@@ -88,6 +106,70 @@ function setStatus(c,st){
   c.querySelectorAll('.pipe .st').forEach(b=>{b.className='st'+(b.dataset.st===st?' on-'+st:'')});
   renderFunnel();
 }
+// собираем сворачиваемую структуру: тело контакта + группы по участникам
+function buildCollapsible(){
+  // 1. тело каждого контакта -> .cbody, кнопка-стрелка в шапку
+  document.querySelectorAll('.contact').forEach(c=>{
+    if(c.querySelector('.cbody')) return;
+    const head=c.querySelector('.chead'), pipe=c.querySelector('.pipe');
+    const body=document.createElement('div'); body.className='cbody';
+    let n=pipe?pipe.nextSibling:null;
+    while(n){ const nx=n.nextSibling; body.appendChild(n); n=nx; }
+    c.appendChild(body);
+    // шапка: обернуть левую часть и добавить тоггл
+    if(head && !head.querySelector('.ctoggle')){
+      const left=document.createElement('div'); left.className='chead-l';
+      const btn=document.createElement('button'); btn.className='ctoggle'; btn.textContent='▾';
+      btn.title='Свернуть / развернуть сообщения';
+      const first=head.firstElementChild;
+      head.insertBefore(left,first); left.appendChild(btn);
+      if(first && first!==left) left.appendChild(first);
+      btn.onclick=e=>{e.stopPropagation();toggleContact(c);};
+    }
+  });
+  // 2. группы: h2.grp + следующие контакты -> .grpwrap > .grp-body
+  document.querySelectorAll('h2.grp').forEach(h=>{
+    if(h.parentElement && h.parentElement.classList.contains('grpwrap')) return;
+    const wrap=document.createElement('div'); wrap.className='grpwrap';
+    const body=document.createElement('div'); body.className='grp-body';
+    h.parentNode.insertBefore(wrap,h); wrap.appendChild(h); wrap.appendChild(body);
+    let n=wrap.nextSibling;
+    while(n){ const nx=n.nextSibling;
+      if(n.nodeType===1 && n.tagName==='H2') break;
+      body.appendChild(n); n=nx; }
+    const chev=document.createElement('span'); chev.className='gchev'; chev.textContent='▾';
+    h.insertBefore(chev,h.firstChild);
+    const cnt=document.createElement('span'); cnt.className='gcount';
+    cnt.textContent=body.querySelectorAll('.contact').length+' контактов';
+    h.appendChild(cnt);
+    h.onclick=()=>toggleGroup(wrap);
+  });
+}
+function toggleContact(c,force){
+  const closed = force===undefined ? !c.classList.contains('closed') : force;
+  c.classList.toggle('closed',closed); lsSet('ahcol_'+c.dataset.id,closed?'1':'0');
+}
+function toggleGroup(w,force){
+  const closed = force===undefined ? !w.classList.contains('closed') : force;
+  w.classList.toggle('closed',closed);
+  const k=w.querySelector('h2.grp')?.textContent.replace(/\s+/g,'').slice(0,24);
+  lsSet('ahgrp_'+k,closed?'1':'0');
+}
+function addControls(){
+  if(document.querySelector('.ctrls')) return;
+  const bar=document.createElement('div'); bar.className='ctrls';
+  const b1=document.createElement('button'); b1.textContent='Свернуть всё';
+  const b2=document.createElement('button'); b2.textContent='Развернуть всё';
+  const hint=document.createElement('span'); hint.className='hint';
+  hint.textContent='Клик по имени участника скрывает его список · стрелка у контакта скрывает сообщения';
+  b1.onclick=()=>{document.querySelectorAll('.contact').forEach(c=>toggleContact(c,true));
+                  document.querySelectorAll('.grpwrap').forEach(w=>toggleGroup(w,true));};
+  b2.onclick=()=>{document.querySelectorAll('.contact').forEach(c=>toggleContact(c,false));
+                  document.querySelectorAll('.grpwrap').forEach(w=>toggleGroup(w,false));};
+  bar.appendChild(b1); bar.appendChild(b2); bar.appendChild(hint);
+  const f=document.getElementById('funnel');
+  f.parentNode.insertBefore(bar,f.nextSibling);
+}
 function initOutreach(){
   document.querySelectorAll('.contact').forEach(c=>{
     // who from preceding h2
@@ -101,6 +183,14 @@ function initOutreach(){
     });
     const ta=c.querySelector('.ntext'), nk='ahnote_'+c.dataset.id;
     ta.value=lsGet(nk,''); ta.oninput=()=>lsSet(nk,ta.value);
+  });
+  buildCollapsible();
+  addControls();
+  // восстановить свёрнутое состояние
+  document.querySelectorAll('.contact').forEach(c=>{ if(lsGet('ahcol_'+c.dataset.id,'0')==='1') c.classList.add('closed'); });
+  document.querySelectorAll('.grpwrap').forEach(w=>{
+    const k=w.querySelector('h2.grp')?.textContent.replace(/\s+/g,'').slice(0,24);
+    if(lsGet('ahgrp_'+k,'0')==='1') w.classList.add('closed');
   });
   renderFunnel();
 }
