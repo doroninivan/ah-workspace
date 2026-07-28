@@ -244,7 +244,9 @@ function initOutreach(){
     // who from preceding h2
     let el=c.previousElementSibling; while(el&&!el.classList.contains('grp'))el=el.previousElementSibling;
     c.dataset.who=el?el.textContent.split('·')[0].trim():'';
-    const st=lsGet('ahout_'+c.dataset.id,'plan'); setStatus(c,st);
+    // true = не отправлять в облако: это восстановление локального состояния,
+    // иначе свежая вкладка затёрла бы чужие статусы дефолтным «в плане»
+    const st=lsGet('ahout_'+c.dataset.id,'plan'); setStatus(c,st,true);
     c.querySelectorAll('.pipe .st').forEach(b=>b.onclick=()=>setStatus(c,b.dataset.st));
     c.querySelectorAll('.copy').forEach(b=>b.onclick=()=>{
       const t=b.closest('.mb').querySelector('.mtext').innerText;
