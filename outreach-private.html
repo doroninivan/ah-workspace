@@ -104,10 +104,75 @@ function renderFunnel(){
   h+='<div class="fnl-sub">'+Object.keys(byWho).map(w=>'<span><b style="color:#1a1a1a">'+w+'</b>: в работе '+byWho[w].sent+' · ответили '+byWho[w].rep+'</span>').join('')+'<span>Всего: '+total+'</span></div>';
   document.getElementById('funnel').innerHTML=h;
 }
-function setStatus(c,st){
+function setStatus(c,st,fromCloud){
   c.dataset.status=st; lsSet('ahout_'+c.dataset.id,st);
   c.querySelectorAll('.pipe .st').forEach(b=>{b.className='st'+(b.dataset.st===st?' on-'+st:'')});
   renderFunnel();
+  if(!fromCloud) cloudPush(c.dataset.id,{status:st});
+}
+
+/* ============ облачная синхронизация (Google Sheets через Apps Script) ============ */
+var CLOUD={ep:'',tok:'',on:false};
+function cloudInit(){
+  var el=document.getElementById('cfg');
+  CLOUD.ep=(el&&el.dataset.ep)||lsGet('ahep','');
+  CLOUD.tok=(el&&el.dataset.tok)||lsGet('ahtok','');
+  CLOUD.on=!!CLOUD.ep;
+  return CLOUD.on;
+}
+function meName(){
+  var w=lsGet('ahme','');
+  if(!w){ w=(prompt('Кто вы? Это увидят коллеги в таблице.\n(Нур / Асхат / Лана / Иван)','')||'').trim()||'—'; lsSet('ahme',w); }
+  return w;
+}
+function syncMark(state,txt){
+  var el=document.getElementById('syncbadge'); if(!el) return;
+  var map={ok:['#e6f4ec','#137333'],err:['#fdf4e3','#b7791f'],off:['#eef3f8','#5c6b80']};
+  var c=map[state]||map.off;
+  el.style.background=c[0]; el.style.color=c[1]; el.textContent=txt;
+}
+function hhmm(){ var d=new Date(); return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
+function cloudPush(id,patch){
+  if(!CLOUD.on) return;
+  var body=Object.assign({token:CLOUD.tok,id:id,who:meName()},patch);
+  fetch(CLOUD.ep,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body)})
+    .then(function(){ syncMark('ok','☁ синхронизировано '+hhmm()); })
+    .catch(function(){ syncMark('err','⚠ офлайн — сохранено локально'); });
+}
+function cloudPull(){
+  if(!CLOUD.on) return;
+  fetch(CLOUD.ep+'?token='+encodeURIComponent(CLOUD.tok)+'&t='+Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(!d||!d.ok) throw new Error('bad');
+      (d.rows||[]).forEach(function(row){
+        var c=document.querySelector('.contact[data-id="'+row.id+'"]'); if(!c) return;
+        if(row.status && row.status!==c.dataset.status) setStatus(c,row.status,true);
+        var ta=c.querySelector('.ntext');
+        if(ta && typeof row.note==='string' && document.activeElement!==ta && ta.value!==row.note){
+          ta.value=row.note; lsSet('ahnote_'+row.id,row.note);
+        }
+      });
+      syncMark('ok','☁ синхронизировано '+hhmm());
+    })
+    .catch(function(){ syncMark('err','⚠ офлайн — сохранено локально'); });
+}
+function addSyncUI(){
+  var bar=document.querySelector('.ctrls'); if(!bar||document.getElementById('syncbadge')) return;
+  var b=document.createElement('span'); b.id='syncbadge';
+  b.style.cssText='font-size:11.5px;font-weight:700;padding:7px 13px;border-radius:100px;background:#eef3f8;color:#5c6b80;';
+  bar.insertBefore(b,bar.firstChild);
+  if(CLOUD.on){ syncMark('off','☁ подключение…'); }
+  else{
+    syncMark('off','⚙ синхронизация не настроена');
+    b.style.cursor='pointer'; b.title='Нажмите, чтобы указать адрес синхронизации';
+    b.onclick=function(){
+      var ep=(prompt('URL веб-приложения Apps Script (…/exec):',lsGet('ahep',''))||'').trim();
+      if(!ep) return;
+      var tk=(prompt('TOKEN из скрипта:',lsGet('ahtok',''))||'').trim();
+      lsSet('ahep',ep); lsSet('ahtok',tk); location.reload();
+    };
+  }
 }
 // собираем сворачиваемую структуру: тело контакта + группы по участникам
 function buildCollapsible(){
@@ -186,11 +251,20 @@ function initOutreach(){
       navigator.clipboard.writeText(t).then(()=>{const o=b.textContent;b.textContent='СКОПИРОВАНО ✓';setTimeout(()=>b.textContent=o,1400);});
     });
     const ta=c.querySelector('.ntext'), nk='ahnote_'+c.dataset.id;
-    ta.value=lsGet(nk,''); ta.oninput=()=>lsSet(nk,ta.value);
+    ta.value=lsGet(nk,'');
+    let nt;
+    ta.oninput=()=>{
+      lsSet(nk,ta.value);
+      clearTimeout(nt);
+      nt=setTimeout(()=>cloudPush(c.dataset.id,{note:ta.value}),900);
+    };
   });
   buildCollapsible();
   addControls();
   addLogout();
+  cloudInit();
+  addSyncUI();
+  if(CLOUD.on){ cloudPull(); setInterval(cloudPull,45000); }
   // восстановить свёрнутое состояние
   document.querySelectorAll('.contact').forEach(c=>{ if(lsGet('ahcol_'+c.dataset.id,'0')==='1') c.classList.add('closed'); });
   document.querySelectorAll('.grpwrap').forEach(w=>{
