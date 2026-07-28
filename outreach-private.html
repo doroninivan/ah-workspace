@@ -139,6 +139,24 @@ function cloudPush(id,patch){
     .then(function(){ syncMark('ok','☁ синхронизировано '+hhmm()); })
     .catch(function(){ syncMark('err','⚠ офлайн — сохранено локально'); });
 }
+/* Разовый перенос: локальные отметки, сделанные ДО включения синхронизации,
+   уезжают в облако ПЕРЕД первым чтением — иначе облако затрёт их дефолтом. */
+function cloudMigrateOnce(){
+  if(!CLOUD.on || lsGet('ahmigrated','')==='1') return Promise.resolve();
+  var pending=[];
+  document.querySelectorAll('.contact').forEach(function(c){
+    var id=c.dataset.id, st=lsGet('ahout_'+id,'plan'), nt=lsGet('ahnote_'+id,'');
+    if(st!=='plan'||nt) pending.push({id:id,status:st,note:nt});
+  });
+  lsSet('ahmigrated','1');
+  if(!pending.length) return Promise.resolve();
+  syncMark('off','☁ переношу отметки: '+pending.length+'…');
+  var me=meName();
+  return Promise.all(pending.map(function(p){
+    return fetch(CLOUD.ep,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({token:CLOUD.tok,id:p.id,status:p.status,note:p.note,who:me})}).catch(function(){});
+  }));
+}
 function cloudPull(){
   if(!CLOUD.on) return;
   fetch(CLOUD.ep+'?token='+encodeURIComponent(CLOUD.tok)+'&t='+Date.now())
@@ -266,7 +284,7 @@ function initOutreach(){
   addLogout();
   cloudInit();
   addSyncUI();
-  if(CLOUD.on){ cloudPull(); setInterval(cloudPull,45000); }
+  if(CLOUD.on){ cloudMigrateOnce().then(cloudPull); setInterval(cloudPull,45000); }
   // восстановить свёрнутое состояние
   document.querySelectorAll('.contact').forEach(c=>{ if(lsGet('ahcol_'+c.dataset.id,'0')==='1') c.classList.add('closed'); });
   document.querySelectorAll('.grpwrap').forEach(w=>{
