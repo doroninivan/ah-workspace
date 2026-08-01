@@ -44,7 +44,16 @@ h2.grp{font-size:16px;margin:26px 0 12px;border-bottom:2px solid var(--line);pad
 .note{margin-top:12px;} .ntext{width:100%;min-height:52px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px;color:var(--tx);font-family:inherit;font-size:12.5px;resize:vertical;}
 .foot{font-size:11px;color:#8a94a3;margin-top:30px;border-top:1px solid var(--line);padding-top:14px;}
 /* ---- сворачивание списков ---- */
-.ctrls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px;}
+.ctrls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
+/* ---- фильтр по статусу + поиск ---- */
+.fbar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:16px;}
+.fchip{font-size:11.5px;font-weight:700;letter-spacing:.02em;padding:7px 13px;border:1px solid var(--line);border-radius:100px;background:#fff;color:var(--mut);cursor:pointer;font-family:inherit;transition:.15s;}
+.fchip:hover{border-color:var(--blue);color:var(--blue);}
+.fchip.on{background:var(--blue);color:#fff;border-color:var(--blue);}
+.fchip .n{opacity:.65;font-weight:600;}
+.fsearch{padding:7px 13px;border:1px solid var(--line);border-radius:100px;font-size:12.5px;font-family:inherit;min-width:190px;background:#fff;color:var(--tx);}
+.fsearch:focus{outline:none;border-color:var(--blue);}
+.fcount{font-size:11.5px;color:var(--mut);margin-left:auto;}
 .ctrls button{font-size:11.5px;font-weight:700;letter-spacing:.03em;padding:8px 14px;border:1px solid var(--line);border-radius:100px;background:#fff;color:var(--tx);cursor:pointer;font-family:inherit;}
 .ctrls button:hover{border-color:var(--blue);color:var(--blue);}
 .ctrls .hint{font-size:11.5px;color:var(--mut);}
@@ -103,6 +112,7 @@ function renderFunnel(){
   cs.forEach(c=>{const w=c.dataset.who;byWho[w]=byWho[w]||{sent:0,rep:0};if((c.dataset.status||'plan')!=='plan'&&c.dataset.status!=='rejected')byWho[w].sent++;if(c.dataset.status==='replied')byWho[w].rep++;});
   h+='<div class="fnl-sub">'+Object.keys(byWho).map(w=>'<span><b style="color:#1a1a1a">'+w+'</b>: в работе '+byWho[w].sent+' · ответили '+byWho[w].rep+'</span>').join('')+'<span>Всего: '+total+'</span></div>';
   document.getElementById('funnel').innerHTML=h;
+  refreshFilterCounts();
 }
 function setStatus(c,st,fromCloud){
   c.dataset.status=st; lsSet('ahout_'+c.dataset.id,st);
@@ -174,6 +184,58 @@ function cloudPull(){
       syncMark('ok','☁ синхронизировано '+hhmm());
     })
     .catch(function(){ syncMark('err','⚠ офлайн — сохранено локально'); });
+}
+/* ---- фильтр по статусу и поиск ---- */
+var FILTER=lsGet('ahfilter','all'), SEARCH='';
+var FLABEL={all:'Все',plan:'Новые',sent:'Отправлено',accepted:'Принято',replied:'Ответили',rejected:'Не подошёл'};
+function applyFilter(){
+  var shown=0, total=0;
+  document.querySelectorAll('.contact').forEach(function(c){
+    total++;
+    var okSt = FILTER==='all' || (c.dataset.status||'plan')===FILTER;
+    var okQ  = !SEARCH || c.innerText.toLowerCase().indexOf(SEARCH)>-1;
+    var vis  = okSt && okQ;
+    c.style.display = vis ? '' : 'none';
+    if(vis) shown++;
+  });
+  // группа без единого видимого контакта только мешает — прячем целиком
+  document.querySelectorAll('.grpwrap').forEach(function(w){
+    var all=w.querySelectorAll('.contact'), v=0;
+    all.forEach(function(c){ if(c.style.display!=='none') v++; });
+    w.style.display = v ? '' : 'none';
+    var cnt=w.querySelector('.gcount');
+    if(cnt) cnt.textContent = (v===all.length) ? all.length+' контактов' : v+' из '+all.length;
+  });
+  var fc=document.getElementById('fcount');
+  if(fc) fc.textContent = (shown===total) ? 'показаны все '+total : 'показано '+shown+' из '+total;
+  document.querySelectorAll('.fchip').forEach(function(b){
+    b.className='fchip'+(b.dataset.f===FILTER?' on':'');
+  });
+}
+function refreshFilterCounts(){
+  var cnt={all:0,plan:0,sent:0,accepted:0,replied:0,rejected:0};
+  document.querySelectorAll('.contact').forEach(function(c){ cnt.all++; cnt[c.dataset.status||'plan']++; });
+  document.querySelectorAll('.fchip').forEach(function(b){
+    var n=b.querySelector('.n'); if(n) n.textContent=cnt[b.dataset.f]||0;
+  });
+}
+function addFilters(){
+  if(document.querySelector('.fbar')) return;
+  var bar=document.createElement('div'); bar.className='fbar';
+  ['all','plan','sent','accepted','replied','rejected'].forEach(function(f){
+    var b=document.createElement('button'); b.className='fchip'; b.dataset.f=f;
+    b.innerHTML=FLABEL[f]+' <span class="n"></span>';
+    b.onclick=function(){ FILTER=f; lsSet('ahfilter',f); applyFilter(); };
+    bar.appendChild(b);
+  });
+  var s=document.createElement('input'); s.className='fsearch'; s.type='search';
+  s.placeholder='Поиск: имя, компания, роль…';
+  s.oninput=function(){ SEARCH=s.value.trim().toLowerCase(); applyFilter(); };
+  bar.appendChild(s);
+  var c=document.createElement('span'); c.className='fcount'; c.id='fcount'; bar.appendChild(c);
+  var ctrls=document.querySelector('.ctrls');
+  ctrls.parentNode.insertBefore(bar, ctrls.nextSibling);
+  refreshFilterCounts(); applyFilter();
 }
 function addSyncUI(){
   var bar=document.querySelector('.ctrls'); if(!bar||document.getElementById('syncbadge')) return;
@@ -281,6 +343,7 @@ function initOutreach(){
   });
   buildCollapsible();
   addControls();
+  addFilters();
   addLogout();
   cloudInit();
   addSyncUI();
