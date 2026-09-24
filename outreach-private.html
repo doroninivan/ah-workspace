@@ -124,7 +124,8 @@ function renderFunnel(){
   h+='<span>Всего в работе сейчас: '+A.total+'</span></div>';
   if(arch.length){
     const N=bars(arch);
-    h+='<div style="margin-top:18px;padding-top:14px;border-top:1px dashed #d6dce4;"><div style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5b6472;margin-bottom:8px;">Нур · архив · итог до увольнения · '+N.total+' контактов</div>'+N.h+'<div class="fnl-sub"><span>Эти люди переданы Сату, поэтому в воронку команды выше не входят</span></div></div>';
+    const op=lsGet('ahnurarch','1')==='1';
+    h+='<details class="arch-fnl"'+(op?' open':'')+' ontoggle="lsSet(\'ahnurarch\',this.open?\'1\':\'0\')" style="margin-top:18px;padding-top:14px;border-top:1px dashed #d6dce4;"><summary style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5b6472;margin-bottom:8px;cursor:pointer;user-select:none;">Нур · архив · итог до увольнения · '+N.total+' контактов <span style="font-weight:500;text-transform:none;letter-spacing:0;color:#8a93a0;">(свернуть / развернуть)</span></summary>'+N.h+'<div class="fnl-sub"><span>Только данные Нура. Эти люди переданы Сату, поэтому в воронку команды выше не входят</span></div></details>';
   }
   document.getElementById('funnel').innerHTML=h;
   refreshFilterCounts();
