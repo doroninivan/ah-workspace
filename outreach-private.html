@@ -123,7 +123,7 @@ function renderFunnel(){
     return m;
   }
   function moveTxt(u){
-    if(!CLOUD.loaded) return '<span style="color:#8a93a0;">загружаю…</span>';
+    if(!CLOUD.loaded) return CLOUD.failed?'<span style="color:#b7791f;">облако не ответило, пробую ещё раз…</span>':'<span style="color:#8a93a0;">загружаю…</span>';
     if(!u) return '<span style="color:#b42318;font-weight:600;">ещё не начинал</span>';
     const d=new Date(u), days=Math.floor((Date.now()-d)/864e5);
     const col=days>14?'#b42318':days>7?'#b7791f':'#137333';
@@ -217,7 +217,11 @@ function cloudPull(){
       CLOUD.loaded=true; renderFunnel();
       syncMark('ok','☁ синхронизировано '+hhmm());
     })
-    .catch(function(){ syncMark('err','⚠ офлайн — сохранено локально'); });
+    .catch(function(){
+      syncMark('err','⚠ офлайн — сохранено локально');
+      // первая загрузка не удалась (Apps Script иногда долго просыпается): короткий повтор, не больше трёх раз
+      if(!CLOUD.loaded){ CLOUD.failed=true; renderFunnel(); CLOUD.retry=(CLOUD.retry||0)+1; if(CLOUD.retry<=3) setTimeout(cloudPull,10000); }
+    });
 }
 /* ---- фильтр по статусу и поиск ---- */
 var FILTER=lsGet('ahfilter','all');
