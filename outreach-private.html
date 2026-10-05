@@ -123,6 +123,7 @@ function renderFunnel(){
     return m;
   }
   function moveTxt(u){
+    if(!CLOUD.loaded) return '<span style="color:#8a93a0;">загружаю…</span>';
     if(!u) return '<span style="color:#b42318;font-weight:600;">ещё не начинал</span>';
     const d=new Date(u), days=Math.floor((Date.now()-d)/864e5);
     const col=days>14?'#b42318':days>7?'#b7791f':'#137333';
@@ -213,7 +214,7 @@ function cloudPull(){
           ta.value=row.note; lsSet('ahnote_'+row.id,row.note);
         }
       });
-      renderFunnel();
+      CLOUD.loaded=true; renderFunnel();
       syncMark('ok','☁ синхронизировано '+hhmm());
     })
     .catch(function(){ syncMark('err','⚠ офлайн — сохранено локально'); });
