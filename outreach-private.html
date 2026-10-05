@@ -116,12 +116,26 @@ function renderFunnel(){
   const act=[...document.querySelectorAll('.contact:not(.arch)')];
   const arch=[...document.querySelectorAll('.contact.arch')];
   const A=bars(act), bw=who(act);
-  let h=A.h+'<div class="fnl-sub">'+Object.keys(bw).map(w=>'<span><b style="color:#1a1a1a">'+w+'</b>: в работе '+bw[w].sent+' · ответили '+bw[w].rep+'</span>').join('');
+  // последнее движение: самая свежая отметка (статус или заметка) в карточках человека, из облака
+  function lastMove(cs){
+    const m={};
+    cs.forEach(c=>{const u=c.dataset.upd; if(u&&(!m[c.dataset.who]||u>m[c.dataset.who])) m[c.dataset.who]=u;});
+    return m;
+  }
+  function moveTxt(u){
+    if(!u) return '<span style="color:#b42318;font-weight:600;">ещё не начинал</span>';
+    const d=new Date(u), days=Math.floor((Date.now()-d)/864e5);
+    const col=days>14?'#b42318':days>7?'#b7791f':'#137333';
+    const dd=('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2);
+    return '<span style="color:'+col+';font-weight:600;">'+dd+(days>0?' ('+days+' дн. назад)':' (сегодня)')+'</span>';
+  }
+  const lm=lastMove(act), inWork=Object.values(bw).reduce((a,x)=>a+x.sent,0);
+  let h=A.h+'<div class="fnl-sub">'+Object.keys(bw).map(w=>'<span><b style="color:#1a1a1a">'+w+'</b>: в работе '+bw[w].sent+' · ответили '+bw[w].rep+(CLOUD.on?' · последнее движение: '+moveTxt(lm[w]):'')+'</span>').join('');
   if(arch.length){
     const aw=who(arch), n=Object.values(aw)[0]||{sent:0,rep:0};
     h+='<span><b style="color:#1a1a1a">Нур (архив)</b>: в работе '+n.sent+' · ответили '+n.rep+'</span>';
   }
-  h+='<span>Всего в работе сейчас: '+A.total+'</span></div>';
+  h+='<span>В работе сейчас: <b style="color:#1a1a1a">'+inWork+'</b> из '+A.total+' контактов (остальные ещё в плане)</span></div>';
   if(arch.length){
     const N=bars(arch);
     const op=lsGet('ahnurarch','1')==='1';
@@ -132,6 +146,7 @@ function renderFunnel(){
 }
 function setStatus(c,st,fromCloud){
   c.dataset.status=st; lsSet('ahout_'+c.dataset.id,st);
+  if(!fromCloud) c.dataset.upd=new Date().toISOString();
   c.querySelectorAll('.pipe .st').forEach(b=>{b.className='st'+(b.dataset.st===st?' on-'+st:'')});
   renderFunnel();
   if(!fromCloud) cloudPush(c.dataset.id,{status:st});
@@ -191,12 +206,14 @@ function cloudPull(){
       if(!d||!d.ok) throw new Error('bad');
       (d.rows||[]).forEach(function(row){
         var c=document.querySelector('.contact[data-id="'+row.id+'"]'); if(!c) return;
+        if(row.updatedAt) c.dataset.upd=new Date(row.updatedAt).toISOString();
         if(row.status && row.status!==c.dataset.status) setStatus(c,row.status,true);
         var ta=c.querySelector('.ntext');
         if(ta && typeof row.note==='string' && document.activeElement!==ta && ta.value!==row.note){
           ta.value=row.note; lsSet('ahnote_'+row.id,row.note);
         }
       });
+      renderFunnel();
       syncMark('ok','☁ синхронизировано '+hhmm());
     })
     .catch(function(){ syncMark('err','⚠ офлайн — сохранено локально'); });
@@ -349,7 +366,7 @@ function initOutreach(){
     ta.oninput=()=>{
       lsSet(nk,ta.value);
       clearTimeout(nt);
-      nt=setTimeout(()=>cloudPush(c.dataset.id,{note:ta.value}),900);
+      nt=setTimeout(()=>{c.dataset.upd=new Date().toISOString(); cloudPush(c.dataset.id,{note:ta.value}); renderFunnel();},900);
     };
   });
   buildCollapsible();
